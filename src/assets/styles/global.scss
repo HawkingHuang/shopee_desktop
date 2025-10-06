@@ -1,0 +1,17 @@
+@use "./variables";
+
+html {
+  font-family: Arial, "Microsoft JhengHei", "PingFang TC", "Hiragino Sans GB", sans-serif;
+}
+
+body {
+  .container {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  .navLink {
+    text-decoration: none;
+    color: var(--color-white);
+  }
+}
