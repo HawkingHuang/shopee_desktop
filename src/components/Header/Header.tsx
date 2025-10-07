@@ -5,6 +5,10 @@ import type { HeaderProps } from "../../types/components";
 import bellIcon from "@/assets/images/icons/bell.svg";
 import questionCircleIcon from "@/assets/images/icons/question_circle.svg";
 import globalIcon from "@/assets/images/icons/global.svg";
+import mainLogoIcon from "@/assets/images/icons/main_logo.svg";
+import searchIcon from "@/assets/images/icons/search.svg";
+
+const hotKeywords = ["手機殼", "美式衣服", "藍芽耳機", "暖男之心 100ml", "行動電源", "iPhone 14pro Max", "動動鞋", "質感手機殼", "存錢本", "好看水壺", "蘋果藍芽耳機"];
 
 function Header({ isLogin }: HeaderProps) {
   return (
@@ -51,6 +55,26 @@ function Header({ isLogin }: HeaderProps) {
             <NavLink to="/" className="navLink">
               登入
             </NavLink>
+          </div>
+        </div>
+        <div className="container">
+          <div className={styles.headerWrapLower}>
+            <div className={styles.headerLogo}>
+              <img src={mainLogoIcon} alt="" />
+            </div>
+            <div className={styles.headerSearch}>
+              <form className={styles.headerSearchInputForm} action="">
+                <input className={styles.headerSearchInput} type="text" placeholder="註冊獲得全站優惠券與免運券" />
+                <button className={styles.headerSearchButton}>
+                  <img src={searchIcon} alt="" />
+                </button>
+              </form>
+              <div className={styles.headerSearchSuggestion}>
+                {hotKeywords.map((keyword) => (
+                  <span key={keyword}>{keyword}</span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
