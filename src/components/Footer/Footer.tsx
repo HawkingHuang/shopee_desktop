@@ -58,6 +58,8 @@ const socialMediaList = [
   },
 ];
 
+const countryList = ["新加坡", "印尼", "泰國", "馬來西亞", "越南", "菲律賓", "巴西", "墨西哥", "哥倫比亞", "智利", "台灣"];
+
 function Footer() {
   return (
     <footer className={styles.footerWrap}>
@@ -137,6 +139,22 @@ function Footer() {
                   <img src={appGalleryPNG} alt="" />
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className={styles.footerWrapLower}>
+          <div className={styles.companyInfo}>
+            <p>新加坡商蝦皮娛樂電商有限公司台灣分公司</p>
+            <p>統一編號：56801904</p>
+          </div>
+          <div className={styles.copyright}>
+            <p>&#169; 2025 Shopee. 版權所有。</p>
+            <div className={styles.countryList}>
+              {countryList.map((country) => (
+                <p key={country}>{country}</p>
+              ))}
             </div>
           </div>
         </div>

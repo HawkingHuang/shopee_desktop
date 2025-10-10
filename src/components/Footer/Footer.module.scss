@@ -4,7 +4,11 @@
   left: 0;
   width: 100%;
   background-color: #fbfbfb;
-  padding-top: 50px;
+  padding: 50px 0 25px;
+  :global(.container):first-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
+  }
   :global(.container) {
     .footerWrapUpper {
       display: flex;
@@ -75,6 +79,47 @@
               border-radius: 0.125rem;
               padding: 4px;
             }
+          }
+        }
+      }
+    }
+
+    .footerWrapLower {
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      color: #000000a6;
+      font-size: 0.875rem;
+
+      .companyInfo {
+        display: flex;
+        gap: 20px;
+
+        p {
+          margin-bottom: 0px;
+        }
+      }
+
+      .copyright {
+        display: flex;
+        justify-content: space-between;
+
+        .countryList {
+          display: flex;
+          gap: 10px;
+
+          & > * {
+            position: relative;
+          }
+
+          & > :not(:first-child)::before {
+            content: "";
+            height: 0.9rem;
+            left: -5px;
+            position: absolute;
+            top: calc(50% - 6px);
+            width: 0px;
+            border-left: 1px solid rgba(0, 0, 0, 0.2);
           }
         }
       }
