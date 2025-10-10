@@ -162,10 +162,22 @@
           display: flex;
           align-items: center;
           gap: 10px;
-          span {
+          a {
             color: #ffffffe6;
             font-size: 12px;
+            cursor: pointer;
           }
+        }
+      }
+      .headerCart {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+        img {
+          cursor: pointer;
+          height: 26px;
+          width: 26px;
         }
       }
     }

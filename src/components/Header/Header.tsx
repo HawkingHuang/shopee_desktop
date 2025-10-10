@@ -7,8 +7,9 @@ import questionCircleIcon from "@/assets/images/icons/question_circle.svg";
 import globalIcon from "@/assets/images/icons/global.svg";
 import mainLogoIcon from "@/assets/images/icons/main_logo.svg";
 import searchIcon from "@/assets/images/icons/search.svg";
+import cartIcon from "@/assets/images/icons/cart.svg";
 
-const hotKeywords = ["手機殼", "美式衣服", "藍芽耳機", "暖男之心 100ml", "行動電源", "iPhone 14pro Max", "動動鞋", "質感手機殼", "存錢本", "好看水壺", "蘋果藍芽耳機"];
+const hotKeywords = ["手機殼", "美式衣服", "藍芽耳機", "曠野之心", "行動電源", "iPhone 14pro Max", "外套", "質感手機殼", "存錢本", "好看水壺", "流行服飾"];
 
 function Header({ isLogin }: HeaderProps) {
   return (
@@ -71,9 +72,12 @@ function Header({ isLogin }: HeaderProps) {
               </form>
               <div className={styles.headerSearchSuggestion}>
                 {hotKeywords.map((keyword) => (
-                  <span key={keyword}>{keyword}</span>
+                  <a key={keyword}>{keyword}</a>
                 ))}
               </div>
+            </div>
+            <div className={styles.headerCart}>
+              <img src={cartIcon} alt="" />
             </div>
           </div>
         </div>

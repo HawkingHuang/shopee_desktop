@@ -1,0 +1,83 @@
+.footerWrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fbfbfb;
+  padding-top: 50px;
+  :global(.container) {
+    .footerWrapUpper {
+      display: flex;
+      justify-content: space-between;
+
+      .listWrap {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        .listTitle {
+          color: #000000de;
+          font-size: 0.75rem;
+          font-weight: 600;
+        }
+
+        .listContent {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+
+          .list {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #000000a6;
+            font-size: 0.75rem;
+          }
+        }
+
+        .listGrid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 12px;
+          padding: 12px 0;
+          .listGridItem {
+            background-color: var(--color-white);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            border-radius: 0.125rem;
+            font-size: 0.75rem;
+            padding: 4px;
+          }
+        }
+
+        .listTwoColumn {
+          display: flex;
+          gap: 15px;
+
+          div:first-child {
+            display: flex;
+            align-items: center;
+            background-color: var(--color-white);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            border-radius: 0.125rem;
+            padding: 4px;
+          }
+
+          .listContent {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            a {
+              display: flex;
+              align-items: center;
+              background-color: var(--color-white);
+              box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+              border-radius: 0.125rem;
+              padding: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
