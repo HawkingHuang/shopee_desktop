@@ -1,0 +1,183 @@
+.loginSignupWrap {
+  :global(.container) {
+    padding: 10px 0 25px;
+    .loginSignupWrapUpper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .loginSignupWrapUpperLeft {
+        display: flex;
+        align-items: end;
+        gap: 10px;
+
+        img {
+          width: 190px;
+          height: 42px;
+        }
+
+        .loginSignupTitle {
+          font-size: 1.5rem;
+          padding-bottom: 2px;
+          color: #222;
+        }
+      }
+
+      .loginSignupWrapUpperRight {
+        :global(.navLink) {
+          font-size: 0.875rem;
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+
+  .loginSignupWrapLower {
+    width: 100%;
+    background-color: rgb(208, 1, 27);
+
+    .loginSignupWrapLowerInner {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      height: 600px;
+      background-image: url("@/assets/images/login_signup_bg.jfif");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      .formWrap {
+        width: 360px;
+        padding: 20px;
+        background-color: var(--color-white);
+        border-radius: 4px;
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.14);
+        margin-right: 25vw;
+
+        .formTitle {
+          color: #222;
+          font-size: 1.25rem;
+          padding: 0 0 20px;
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+
+          input {
+            padding: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.14);
+            border-radius: 2px;
+            box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.02);
+          }
+
+          .formSubmitBtn {
+            background-color: var(--color-primary);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);
+            color: var(--color-white);
+            border: none;
+          }
+        }
+
+        :global(.navLink) {
+          display: block;
+          font-size: 0.75rem;
+          color: #05a;
+          padding: 10px 0;
+        }
+
+        .dividerWrap {
+          display: flex;
+          align-items: center;
+          color: #ccc;
+          font-size: 0.75rem;
+          gap: 10px;
+
+          .divider {
+            background-color: #dbdbdb;
+            flex: 1;
+            height: 1px;
+            width: 100%;
+          }
+        }
+
+        .thirdPartyWrap {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          padding-top: 20px;
+
+          .thirdPartyBtn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-white);
+            border: 1px solid rgba(0, 0, 0, 0.26);
+            border-radius: 2px;
+            gap: 5px;
+            padding: 8px 0;
+            color: rgba(0, 0, 0, 0.87);
+            font-size: 0.875rem;
+
+            .facebook {
+              width: 22px;
+              height: 22px;
+              background-image: url("@/assets/images/social_media_group_two.png");
+              background-position: 5.5555555556% 62.6666666667%;
+              background-size: 325% 287.5%;
+            }
+            .google {
+              width: 22px;
+              height: 22px;
+              background-image: url("@/assets/images/social_media_group_two.png");
+              background-position: 83.9285714286% 5.1546391753%;
+              background-size: 722.2222222222% 638.8888888889%;
+            }
+          }
+        }
+
+        .newFriendWrap {
+          display: flex;
+          justify-content: center;
+          padding-top: 36px;
+          padding-bottom: 10px;
+          color: rgba(0, 0, 0, 0.26);
+          font-size: 0.875rem;
+
+          .signup {
+            text-decoration: none;
+            color: #ee4d2d;
+          }
+        }
+
+        .agreements {
+          padding-top: 30px;
+          text-align: center;
+          color: rgba(0, 0, 0, 0.87);
+          font-size: 12px;
+
+          .term {
+            color: #ee4d2d;
+            cursor: pointer;
+          }
+        }
+
+        .alreadyFriendWrap {
+          display: flex;
+          justify-content: center;
+          padding-top: 28px;
+          padding-bottom: 10px;
+          color: rgba(0, 0, 0, 0.26);
+          font-size: 0.875rem;
+
+          .login {
+            text-decoration: none;
+            color: #ee4d2d;
+          }
+        }
+      }
+    }
+  }
+}

@@ -50,10 +50,10 @@ function Header({ isLogin }: HeaderProps) {
               <img src={globalIcon} alt="" />
               繁體中文
             </NavLink>
-            <NavLink to="/" className="navLink">
+            <NavLink to="/signup" className="navLink">
               註冊
             </NavLink>
-            <NavLink to="/" className="navLink">
+            <NavLink to="/login" className="navLink">
               登入
             </NavLink>
           </div>
