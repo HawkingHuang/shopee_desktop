@@ -1,7 +1,86 @@
 .topBannerWrap {
   margin-top: 130px;
+  padding-top: 20px;
+  padding-bottom: 25px;
 
   :global(.container) {
+    .topBannerCarouselWrap {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      gap: 5px;
+      margin-bottom: 30px;
+
+      .topBannerCarouselWrapLeft {
+        position: relative;
+        flex: 2;
+        min-width: 0;
+
+        .customSwiperButtonPrev,
+        .customSwiperButtonNext {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 2;
+          background-color: rgba(0, 0, 0, 0.18);
+          height: 60px;
+          width: 35px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          cursor: pointer;
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        .visible {
+          opacity: 1;
+        }
+
+        .customSwiperButtonPrev {
+          left: 0px;
+          border-bottom-right-radius: 2px;
+          border-top-right-radius: 2px;
+        }
+
+        .customSwiperButtonNext {
+          right: 0px;
+          border-bottom-left-radius: 2px;
+          border-top-left-radius: 2px;
+        }
+
+        .carouselSwiper {
+          width: 100%;
+
+          .carouselImg {
+            display: block;
+            width: 100%;
+            aspect-ratio: 3.33 / 1.02;
+            border-radius: 2px;
+          }
+        }
+      }
+
+      .topBannerCarouselWrapRight {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .rightBannerImg {
+          display: block;
+          width: 100%;
+          aspect-ratio: 3.33 / 1;
+          border-radius: 2px;
+        }
+      }
+    }
+
     .topBannerNavWrap {
       display: flex;
       justify-content: space-around;
@@ -23,4 +102,20 @@
       }
     }
   }
+}
+
+:global(.swiper-pagination-bullet) {
+  background-color: hsla(0, 0%, 100%, 0.4) !important;
+  border: 1px solid hsla(0, 0%, 54%, 0.4) !important;
+  opacity: 1 !important;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background-color: #ee4d2d !important;
+  border-color: #ee4d2d !important;
+}
+
+:global(.swiper-horizontal > .swiper-pagination-bullets),
+:global(.swiper-pagination-bullets.swiper-pagination-horizontal) {
+  bottom: 16px !important;
 }
