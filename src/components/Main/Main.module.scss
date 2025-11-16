@@ -1,0 +1,110 @@
+.mainWrap {
+  :global(.container) {
+    .officialImg {
+      display: block;
+    }
+    .main {
+      width: 100%;
+      background-image: url("@/assets/images/main/red_bg.png");
+
+      .mainMiddle {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 30px;
+
+        .mainMiddleText {
+          font-size: 1rem;
+          color: var(--color-white);
+        }
+
+        .mainMiddleMore {
+          display: flex;
+          align-items: center;
+          font-size: 0.75rem;
+          color: var(--color-white);
+          text-decoration: none;
+          svg {
+            width: 0.5625rem;
+            height: 0.5625rem;
+          }
+        }
+      }
+
+      .productsVendorsWrap {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        gap: 1px;
+        padding: 0 16px;
+
+        .productVendor {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1px;
+          flex: 1 0 0;
+          background-color: var(--color-white);
+          padding: 15px 0 20px;
+
+          .productImgWrap {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .productImg {
+              width: 83%;
+              display: block;
+              object-fit: cover;
+            }
+
+            .vendorImgWrap {
+              height: 55px;
+              width: 72%;
+              position: absolute;
+              bottom: -10px;
+              left: 50%;
+              transform: translateX(-50%);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: var(--color-white);
+              border-radius: 1.90625rem;
+              box-shadow: 0 0 3px rgba(0, 0, 0, 0.14);
+
+              .vendorImg {
+                height: 100%;
+              }
+            }
+          }
+
+          .productText {
+            font-size: 1.125rem;
+            margin-bottom: 0;
+            color: rgb(208, 2, 27);
+
+            // .vendorImgWrap {
+            //   height: 55px;
+            //   width: 72%;
+            //   position: absolute;
+            //   top: -60px;
+            //   left: 50%;
+            //   transform: translateX(-50%);
+            //   display: flex;
+            //   align-items: center;
+            //   justify-content: center;
+            //   background-color: var(--color-white);
+
+            //   .vendorImg {
+            //     height: 100%;
+            //   }
+            // }
+          }
+        }
+      }
+    }
+  }
+}

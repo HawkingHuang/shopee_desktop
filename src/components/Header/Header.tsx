@@ -22,7 +22,7 @@ function Header({ isLogin }: HeaderProps) {
             </NavLink>
             {!isLogin && (
               <NavLink to="/" className="navLink">
-                開始隨拍即賣囉！
+                開始隨拍即賣囉!
               </NavLink>
             )}
             <NavLink to="/" className="navLink">
