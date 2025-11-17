@@ -4,6 +4,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import type { NavigationOptions } from "swiper/types";
 import { useRef, useState } from "react";
 
 const carouselImgs = Object.values(import.meta.glob<string>("@/assets/images/top_banner/carousel/carousel_*.webp", { eager: true, import: "default" }));
@@ -88,8 +89,9 @@ function TopBanner() {
               loop={true}
               pagination={{ clickable: true }}
               onBeforeInit={(swiper) => {
-                swiper.params.navigation.prevEl = prevRef.current;
-                swiper.params.navigation.nextEl = nextRef.current;
+                const navigation = swiper.params.navigation as NavigationOptions;
+                navigation.prevEl = prevRef.current;
+                navigation.nextEl = nextRef.current;
               }}
               navigation={{
                 prevEl: prevRef.current,

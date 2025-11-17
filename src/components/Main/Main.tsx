@@ -3,8 +3,6 @@ import styles from "./Main.module.scss";
 import officialImg from "@/assets/images/main/official.jfif";
 import redBgBottom from "@/assets/images/main/red_bg_bottom.png";
 
-// const productImgs = Object.values(import.meta.glob<string>("@/assets/images/main/products/*.jfif", { eager: true, import: "default" }));
-// const vendorImgs = Object.values(import.meta.glob<string>("@/assets/images/main/vendors/*.png", { eager: true, import: "default" }));
 const productImgs = Object.entries(
   import.meta.glob<string>("@/assets/images/main/products/*.jfif", {
     eager: true,

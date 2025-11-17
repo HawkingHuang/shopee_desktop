@@ -1,0 +1,93 @@
+.categoryWrap {
+  margin-top: 15px;
+  :global(.container) {
+    background-color: var(--color-white);
+    .categoryTitle {
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 1rem;
+      padding: 20px;
+    }
+
+    .categoryLine {
+      position: relative;
+
+      .customSwiperButtonPrev,
+      .customSwiperButtonNext {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        background-color: var(--color-white);
+        height: 25px;
+        width: 25px;
+        opacity: 0;
+        transition: transform 0.1s ease;
+        border-radius: 9999px;
+        box-shadow: 0 1px 12px #0000001f;
+        cursor: pointer;
+
+        svg {
+          width: 0.625rem;
+          height: 0.625rem;
+        }
+      }
+
+      .visible {
+        opacity: 1;
+      }
+
+      .scale {
+        transform: translateY(-50%) scale(2);
+      }
+
+      .customSwiperButtonPrev {
+        left: -13px;
+      }
+
+      .customSwiperButtonNext {
+        right: -13px;
+      }
+
+      .carouselSwiper {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        .categoryItemWrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .categoryItem {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 12px 0;
+
+            .categoryItemImg {
+              width: 65%;
+              aspect-ratio: 1 / 1;
+              object-fit: contain;
+            }
+
+            .categoryItemName {
+              color: rgba(0, 0, 0, 0.8);
+              font-size: 0.875rem;
+              padding: 20px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+:global(.swiper-slide) {
+  &:first-child {
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+  }
+}
