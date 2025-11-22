@@ -1,11 +1,13 @@
 import styles from "./LimitedTime.module.scss";
+import dayjs from "dayjs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import type { NavigationOptions } from "swiper/types";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import Digits from "../Digits/Digits";
 import limitedTimeImg from "@/assets/images/limited_time/limited_time.png";
 import officialStoreImg from "@/assets/images/limited_time/corner_imgs/official_store.png";
 import selectionImg from "@/assets/images/limited_time/corner_imgs/selection.png";
@@ -136,6 +138,10 @@ const mergedMainItemInfo = mainItemInfo.map((item, index) => ({
   img: mainItemImgs[index],
 }));
 
+const now = dayjs();
+const tomorrow = dayjs().add(1, "day").startOf("day");
+const remainingSec = tomorrow.diff(now, "second");
+
 function LimitedTime() {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -143,6 +149,19 @@ function LimitedTime() {
   const [scaleRightArrow, setScaleRightArrow] = useState(false);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  const [remaining, setRemaining] = useState(remainingSec);
+  const hours = Math.floor(remaining / 3600);
+  const minutes = Math.floor((remaining % 3600) / 60);
+  const seconds = remaining % 60;
+  const digits = {
+    h1: Math.floor(hours / 10),
+    h2: hours % 10,
+    m1: Math.floor(minutes / 10),
+    m2: minutes % 10,
+    s1: Math.floor(seconds / 10),
+    s2: seconds % 10,
+  };
 
   function handleMouseEnter() {
     setScaleLeftArrow(true);
@@ -154,13 +173,34 @@ function LimitedTime() {
     setScaleRightArrow(false);
   }
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRemaining((prev) => Math.max(prev - 1, 0));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className={styles.limitedTimeWrap}>
       <div className="container">
         <div className={styles.limitedTimeTitleWrap}>
           <div className={styles.LimitedTimeTitleWrapLeft}>
             <img src={limitedTimeImg} alt="" />
-            <div>倒數計時</div>
+            <div className={styles.countdown}>
+              <div className={styles.hours}>
+                <Digits value={digits.h1} />
+                <Digits value={digits.h2} />
+              </div>
+              <div className={styles.minutes}>
+                <Digits value={digits.m1} />
+                <Digits value={digits.m2} />
+              </div>
+              <div className={styles.seconds}>
+                <Digits value={digits.s1} />
+                <Digits value={digits.s2} />
+              </div>
+            </div>
           </div>
           <div className={styles.LimitedTimeTitleWrapRight}>
             查看全部

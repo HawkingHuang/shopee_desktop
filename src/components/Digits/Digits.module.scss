@@ -1,0 +1,27 @@
+.digit {
+  width: 10px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+
+  .digitList {
+    position: absolute;
+    bottom: -2px;
+    left: -20%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.8s ease-in-out;
+
+    span {
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 13px;
+
+      img {
+        width: 16px !important;
+        height: 12px !important;
+      }
+    }
+  }
+}
