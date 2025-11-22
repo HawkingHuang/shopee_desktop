@@ -1,0 +1,202 @@
+.limitedTimeWrap {
+  // background-color: red;
+  margin-top: 20px;
+  :global(.container) {
+    background-color: var(--color-white);
+    .limitedTimeTitleWrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+
+      .LimitedTimeTitleWrapLeft {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          width: 96px;
+        }
+      }
+
+      .LimitedTimeTitleWrapRight {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
+        font-size: 0.875rem;
+        color: #ee4d2d;
+        cursor: pointer;
+
+        svg {
+          height: 10px;
+          width: 10px;
+        }
+      }
+    }
+
+    .limitedTimeLine {
+      position: relative;
+
+      .customSwiperButtonPrev,
+      .customSwiperButtonNext {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        background-color: var(--color-white);
+        height: 25px;
+        width: 25px;
+        opacity: 0;
+        transition: transform 0.1s ease;
+        border-radius: 9999px;
+        box-shadow: 0 1px 12px #0000001f;
+        cursor: pointer;
+
+        svg {
+          width: 0.625rem;
+          height: 0.625rem;
+        }
+      }
+
+      .visible {
+        opacity: 1;
+      }
+
+      .scale {
+        transform: translateY(-50%) scale(2);
+      }
+
+      .customSwiperButtonPrev {
+        left: -13px;
+      }
+
+      .customSwiperButtonNext {
+        right: -13px;
+      }
+
+      .carouselSwiper {
+        .limitedItemWrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 15px;
+
+          .limitedItemImgWrap {
+            position: relative;
+            width: 100%;
+
+            .discount {
+              position: absolute;
+              top: 0;
+              right: 0;
+              display: flex;
+              align-items: center;
+              gap: 2px;
+              z-index: 1;
+              font-size: 0.875rem;
+              color: #ec3814;
+              background-color: #ffe97a;
+              white-space: nowrap;
+              // padding: 0 0.15625rem 0 0.53125rem;
+              border-radius: 0.125rem 0 0;
+            }
+
+            .topLeftImgWrap {
+              position: absolute;
+              top: 4px;
+              left: -4px;
+              z-index: 1;
+
+              .topLeftImg {
+                width: 26px;
+                height: 18px;
+
+                &.notOfficial {
+                  width: 44px;
+                  height: 18px;
+                }
+              }
+            }
+
+            .limitedItemImg {
+              width: 100%;
+              aspect-ratio: 1 / 1;
+              object-fit: contain;
+            }
+
+            .bottomLeftImgWrap {
+              position: absolute;
+              inset: 0;
+              z-index: 1;
+
+              .bottomLeftImg {
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: contain;
+              }
+            }
+          }
+
+          .limitedItemPrice {
+            color: #ee4d2d;
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 10px !important;
+          }
+          .progressBar {
+            position: relative;
+            width: 80%;
+            height: 16px;
+            font-size: 0.75rem;
+            color: var(--color-white);
+            background: #ffbda6;
+            text-align: center;
+            margin-bottom: 16px;
+            border-radius: 8px;
+
+            .progressBarInner {
+              position: absolute;
+              inset: 0;
+              background: #ffbda6;
+              border-radius: inherit;
+              overflow: hidden;
+              &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                width: var(--percent);
+                background: linear-gradient(270deg, #ffb000 0%, #eb1717 100%);
+              }
+            }
+
+            .progress {
+              position: absolute;
+              top: -25%;
+              left: 50%;
+              transform: translateX(-50%) translateY(-50%);
+              width: 100%;
+            }
+
+            .popularWrap {
+              position: absolute;
+              top: 35%;
+              left: 9%;
+              transform: translate(-50%, -50%);
+              width: 1.125rem;
+              height: 1.3125rem;
+
+              .popular {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
