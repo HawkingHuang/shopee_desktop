@@ -1,7 +1,9 @@
 .limitedTimeWrap {
   margin-top: 20px;
+
   :global(.container) {
     background-color: var(--color-white);
+
     .limitedTimeTitleWrap {
       display: flex;
       justify-content: space-between;
