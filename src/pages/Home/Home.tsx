@@ -6,6 +6,7 @@ import Category from "../../components/Category/Category";
 import LimitedTime from "../../components/LimitedTime/LimitedTime";
 import OfficialStore from "../../components/OfficialStore/OfficialStore";
 import Popular from "../../components/Popular/Popular";
+import Introduction from "../../components/Introduction/Introduction";
 import type { HeaderProps } from "../../types/components";
 
 function Home({ isLogin }: HeaderProps) {
@@ -20,6 +21,7 @@ function Home({ isLogin }: HeaderProps) {
         <OfficialStore />
         <Popular />
       </GraySection>
+      <Introduction />
     </>
   );
 }

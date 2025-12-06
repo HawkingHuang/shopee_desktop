@@ -1,0 +1,62 @@
+.introductionWrap {
+  padding-top: 65px;
+  border-top: 4px solid #ee4d2d;
+
+  :global(.container) {
+    background-color: var(--color-white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    padding-bottom: 65px;
+
+    .introductionSubTitle {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.54);
+      margin-top: 0;
+
+      .introductionLink {
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+
+    .introductionText {
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 0.75rem;
+      margin: 0.625rem 0 0;
+
+      .introductionLink {
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+
+    .mayInterestedWrap {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      column-gap: 16px;
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 0.75rem;
+
+      .mayInterestedText {
+        position: relative;
+        margin: 0.25rem 0;
+        cursor: pointer;
+
+        &:hover {
+          color: #ee4d2d;
+        }
+
+        &:not(:last-child)::before {
+          position: absolute;
+          right: -8px;
+          top: 50%;
+          transform: translateY(-50%) scaleX(0.5);
+          transform-origin: right;
+          content: "";
+          background: rgba(0, 0, 0, 0.54);
+          width: 2px;
+          height: 0.75rem;
+        }
+      }
+    }
+  }
+}
