@@ -265,6 +265,11 @@ function DailyNew() {
             </div>
           ))}
         </div>
+        <div className={styles.dailyNewMoreWrap}>
+          <a href="/" className={styles.dailyNewMore}>
+            查看更多
+          </a>
+        </div>
       </div>
     </div>
   );

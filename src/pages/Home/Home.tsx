@@ -8,6 +8,7 @@ import OfficialStore from "../../components/OfficialStore/OfficialStore";
 import Popular from "../../components/Popular/Popular";
 import DailyNew from "../../components/DailyNew/DailyNew";
 import Introduction from "../../components/Introduction/Introduction";
+import FooterCategory from "../../components/FooterCategory/FooterCategory";
 import type { HeaderProps } from "../../types/components";
 
 function Home({ isLogin }: HeaderProps) {
@@ -24,6 +25,7 @@ function Home({ isLogin }: HeaderProps) {
         <DailyNew />
       </GraySection>
       <Introduction />
+      <FooterCategory />
     </>
   );
 }
