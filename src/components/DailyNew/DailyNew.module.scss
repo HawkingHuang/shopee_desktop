@@ -27,6 +27,10 @@
         border: 1px solid rgba(0, 0, 0, 0.09);
         background-color: var(--color-white);
 
+        &:hover {
+          border-color: rgba(238, 77, 45);
+        }
+
         .discount {
           position: absolute;
           display: inline-block;
@@ -174,6 +178,19 @@
               color: rgba(0, 0, 0, 0.87);
             }
           }
+        }
+
+        .findSimilar {
+          width: 100%;
+          text-align: center;
+          position: absolute;
+          color: var(--color-white);
+          background-color: rgba(238, 77, 45);
+          bottom: -28px;
+          left: -1px;
+          padding: 5px 1px;
+          font-size: 0.875rem;
+          z-index: 1;
         }
       }
     }

@@ -7,6 +7,7 @@ import flashIcon from "@/assets/images/daily_new/icons/flash.svg";
 import officialIcon from "@/assets/images/daily_new/info_tags/official.png";
 import selectionIcon from "@/assets/images/daily_new/info_tags/selection.png";
 import flagshipIcon from "@/assets/images/daily_new/info_tags/flagship.png";
+import { useState } from "react";
 
 const mainItemImgs = Object.entries(
   import.meta.glob<string>("@/assets/images/daily_new/*.webp", {
@@ -205,13 +206,22 @@ const mergedMainItemInfo = mainItemInfo.map((item, index) => ({
 }));
 
 function DailyNew() {
+  const [isHoverIndex, setIsHoverIndex] = useState(null);
+
+  const handleMouseEnter = (index: number) => {
+    setIsHoverIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHoverIndex(null);
+  };
   return (
     <div className={styles.dailyNewWrap}>
       <div className="container">
         <div className={styles.dailyNewTitleWrap}>每日新發現</div>
         <div className={styles.dailyNewContentWrap}>
-          {mergedMainItemInfo.map((item) => (
-            <div className={styles.dailyNewItem}>
+          {mergedMainItemInfo.map((item, index) => (
+            <div className={styles.dailyNewItem} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave}>
               {item.discount && <span className={styles.discount}>{item.discount}折</span>}
               <div className={styles.dailyNewItemImgWrap}>
                 <img className={styles.dailyNewItemImg} src={item.img} alt="" />
@@ -262,6 +272,7 @@ function DailyNew() {
                   <div className={styles.progress}>{item.progress}</div>
                 </div>
               </div>
+              {isHoverIndex === index && <div className={styles.findSimilar}>找相似</div>}
             </div>
           ))}
         </div>
