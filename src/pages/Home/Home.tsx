@@ -9,12 +9,11 @@ import Popular from "../../components/Popular/Popular";
 import DailyNew from "../../components/DailyNew/DailyNew";
 import Introduction from "../../components/Introduction/Introduction";
 import FooterCategory from "../../components/FooterCategory/FooterCategory";
-import type { HeaderProps } from "../../types/components";
 
-function Home({ isLogin }: HeaderProps) {
+function Home() {
   return (
     <>
-      <Header isLogin={isLogin} />
+      <Header />
       <TopBanner />
       <GraySection>
         <Main />

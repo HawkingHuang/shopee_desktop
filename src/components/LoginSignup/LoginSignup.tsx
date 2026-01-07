@@ -1,9 +1,21 @@
 import styles from "./LoginSignup.module.scss";
 import mainLogoOrangeIcon from "@/assets/images/icons/main_logo_orange.svg";
-import { NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { login } from "../../store/authSlice";
 
 function LoginSignup() {
+  const [username, setUsername] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(login(username));
+    setUsername("");
+    navigate("/");
+  }
   return (
     <div className={styles.loginSignupWrap}>
       <div className="container">
@@ -25,7 +37,7 @@ function LoginSignup() {
         <div className={styles.loginSignupWrapLowerInner}>
           <div className={styles.formWrap}>
             <div className={styles.formTitle}>{location.pathname === "/login" ? "登入" : "註冊"}</div>
-            <form action="">
+            <form action="" onSubmit={(e) => handleSubmit(e)}>
               {location.pathname === "/signup" && (
                 <>
                   <input type="text" placeholder="手機號碼" />
@@ -33,7 +45,7 @@ function LoginSignup() {
               )}
               {location.pathname === "/login" && (
                 <>
-                  <input type="text" placeholder="電話號碼/使用者名稱/Email" />
+                  <input type="text" placeholder="電話號碼/使用者名稱/Email" value={username} onChange={(e) => setUsername(e.target.value)} />
                   <input type="password" placeholder="密碼" />
                 </>
               )}
