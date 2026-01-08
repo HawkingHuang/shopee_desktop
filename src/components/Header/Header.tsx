@@ -8,12 +8,24 @@ import mainLogoIcon from "@/assets/images/icons/main_logo.svg";
 import searchIcon from "@/assets/images/icons/search.svg";
 import cartIcon from "@/assets/images/icons/cart.svg";
 import avatarIcon from "@/assets/images/icons/avatar.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/authSlice";
+import * as HoverCard from "@radix-ui/react-hover-card";
+
+import qrcodePNG from "@/assets/images/header/qr_code.png";
+import appStorePNG from "@/assets/images/header/app_store.png";
+import googlePlayPNG from "@/assets/images/header/google_play.png";
+import appGalleryPNG from "@/assets/images/header/app_gallery.png";
+import notiNotLoginPNG from "@/assets/images/header/noti_not_login.png";
+
+import notificationOne from "@/assets/images/header/notifications/1.jfif";
+import notificationTwo from "@/assets/images/header/notifications/2.png";
 
 const hotKeywords = ["手機殼", "美式衣服", "藍芽耳機", "曠野之心", "行動電源", "iPhone 14pro Max", "外套", "質感手機殼", "存錢本", "好看水壺", "流行服飾"];
 
 function Header() {
   const { isLogin, username } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   return (
     <header className={styles.headerWrap}>
@@ -28,9 +40,22 @@ function Header() {
                 開始隨拍即賣囉!
               </NavLink>
             )}
-            <NavLink to="/" className="navLink">
-              下載
-            </NavLink>
+            <HoverCard.Root openDelay={100} closeDelay={100}>
+              <HoverCard.Trigger asChild>
+                <NavLink to="/" className="navLink">
+                  下載
+                </NavLink>
+              </HoverCard.Trigger>
+
+              <HoverCard.Content side="bottom" align="start" sideOffset={4} className={`${styles.downloadPanel} ${styles.hoverCard}`}>
+                <img src={qrcodePNG} alt="" className={styles.qrCode} />
+                <div className={styles.appWrap}>
+                  <img src={appStorePNG} alt="" />
+                  <img src={googlePlayPNG} alt="" />
+                  <img src={appGalleryPNG} alt="" />
+                </div>
+              </HoverCard.Content>
+            </HoverCard.Root>
             <div className="navLink">
               追蹤我們
               <div className="socialMediaGroup">
@@ -41,18 +66,78 @@ function Header() {
             </div>
           </div>
           <div className={styles.headerRight}>
-            <NavLink to="/" className="navLink">
-              <img src={bellIcon} alt="" />
-              通知總覽
-            </NavLink>
+            <HoverCard.Root openDelay={100} closeDelay={100}>
+              <HoverCard.Trigger asChild>
+                <NavLink to="/" className="navLink">
+                  <img src={bellIcon} alt="" />
+                  通知總覽
+                </NavLink>
+              </HoverCard.Trigger>
+
+              <HoverCard.Content side="bottom" align="end" sideOffset={4} className={`${styles.notificationPanel} ${styles.hoverCard}`}>
+                <HoverCard.Arrow className={styles.arrow} />
+
+                {!isLogin ? (
+                  <div className={styles.imgWrap}>
+                    <div className={styles.imgWrapInner}>
+                      <img src={notiNotLoginPNG} alt="" />
+                      <div>要看通知訊息，請先登入</div>
+                    </div>
+                    <div className={styles.btnWrap}>
+                      <NavLink to="/signup">註冊</NavLink>
+                      <NavLink to="/login">登入</NavLink>
+                    </div>
+                  </div>
+                ) : (
+                  <div className={styles.notificationList}>
+                    <div className={styles.notificationTitle}>最近收到的通知</div>
+                    <div className={styles.notificationItem}>
+                      <img src={notificationOne} alt="" />
+                      <div className={styles.itemRight}>
+                        <div className={styles.itemTitle}>驚！1/11神券已送達</div>
+                        <div className={styles.itemContent}>天降好禮!請簽收全站滿千折$100、商城滿千折$200優惠券，記得1/11回來下單</div>
+                      </div>
+                    </div>
+                    <div className={styles.notificationItem}>
+                      <img src={notificationTwo} alt="" />
+                      <div className={styles.itemRight}>
+                        <div className={styles.itemTitle}>輝葉品牌日！年節備戰電動麻將桌下殺</div>
+                        <div className={styles.itemContent}>品牌日一日限定📢小沙發按摩椅$19,999，年節必備電動麻將桌也只要$19,999，手刀點我下單👉</div>
+                      </div>
+                    </div>
+                    <NavLink to="/" className={styles.notificationMore}>
+                      查看全部
+                    </NavLink>
+                  </div>
+                )}
+              </HoverCard.Content>
+            </HoverCard.Root>
             <NavLink to="/" className="navLink">
               <img src={questionCircleIcon} alt="" />
               幫助中心
             </NavLink>
-            <NavLink to="/" className="navLink">
-              <img src={globalIcon} alt="" />
-              繁體中文
-            </NavLink>
+            <HoverCard.Root openDelay={100} closeDelay={100}>
+              <HoverCard.Trigger asChild>
+                <NavLink to="/" className="navLink">
+                  <img src={globalIcon} alt="" />
+                  繁體中文
+                  <svg viewBox="0 0 12 12" fill="none" width="12" height="12" color="currentColor">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8.146L11.146 3l.707.707-5.146 5.147a1 1 0 01-1.414 0L.146 3.707.854 3 6 8.146z" fill="currentColor"></path>
+                  </svg>
+                </NavLink>
+              </HoverCard.Trigger>
+
+              <HoverCard.Content side="bottom" align="end" sideOffset={0} className={`${styles.languagePanel} ${styles.hoverCard}`}>
+                <HoverCard.Arrow className={styles.arrow} />
+
+                <ul className={styles.languageList}>
+                  <li>English</li>
+                  <li className={styles.active}>繁體中文</li>
+                  <li>简体中文</li>
+                </ul>
+              </HoverCard.Content>
+            </HoverCard.Root>
+
             {!isLogin && (
               <>
                 <NavLink to="/signup" className="navLink">
@@ -64,10 +149,24 @@ function Header() {
               </>
             )}
             {isLogin && (
-              <NavLink to="/" className="navLink">
-                <img src={avatarIcon} alt="" className={styles.avatar} />
-                {username}
-              </NavLink>
+              <HoverCard.Root openDelay={100} closeDelay={100}>
+                <HoverCard.Trigger asChild>
+                  <NavLink to="/" className="navLink">
+                    <img src={avatarIcon} alt="" className={styles.avatar} />
+                    {username}
+                  </NavLink>
+                </HoverCard.Trigger>
+
+                <HoverCard.Content side="bottom" align="end" sideOffset={0} className={`${styles.accountPanel} ${styles.hoverCard}`}>
+                  <HoverCard.Arrow className={styles.arrow} />
+
+                  <ul className={styles.accountList}>
+                    <li>我的帳戶</li>
+                    <li>購買清單</li>
+                    <li onClick={() => dispatch(logout())}>登出</li>
+                  </ul>
+                </HoverCard.Content>
+              </HoverCard.Root>
             )}
           </div>
         </div>
