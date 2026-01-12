@@ -1,4 +1,3 @@
-import Header from "../../components/Header/Header";
 import TopBanner from "../../components/TopBanner/TopBanner";
 import GraySection from "../../components/GraySection/GraySection";
 import Main from "../../components/Main/Main";
@@ -13,7 +12,6 @@ import FooterCategory from "../../components/FooterCategory/FooterCategory";
 function Home() {
   return (
     <>
-      <Header />
       <TopBanner />
       <GraySection>
         <Main />

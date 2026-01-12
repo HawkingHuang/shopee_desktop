@@ -3,6 +3,7 @@ import AppLayout from "./ui/AppLayout";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
+import Product from "./pages/Product/Product";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/product/:productId",
+        element: <Product />,
       },
     ],
   },

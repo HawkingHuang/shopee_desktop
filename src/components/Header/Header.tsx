@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
 
 import bellIcon from "@/assets/images/icons/bell.svg";
@@ -24,6 +24,7 @@ import notificationTwo from "@/assets/images/header/notifications/2.png";
 const hotKeywords = ["手機殼", "美式衣服", "藍芽耳機", "曠野之心", "行動電源", "iPhone 14pro Max", "外套", "質感手機殼", "存錢本", "好看水壺", "流行服飾"];
 
 function Header() {
+  const navigate = useNavigate();
   const { isLogin, username } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -172,7 +173,7 @@ function Header() {
         </div>
         <div className="container">
           <div className={styles.headerWrapLower}>
-            <div className={styles.headerLogo}>
+            <div className={styles.headerLogo} onClick={() => navigate("/")}>
               <img src={mainLogoIcon} alt="" />
             </div>
             <div className={styles.headerSearch}>

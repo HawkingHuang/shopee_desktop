@@ -1,0 +1,144 @@
+import styles from "./Product.module.scss";
+import { mergedMainItemInfo } from "../../components/DailyNew/merchandise";
+import { useParams } from "react-router-dom";
+import truckIcon from "../../assets/images/product/truck.svg";
+import shieldIcon from "../../assets/images/product/shield.svg";
+import arrowRightBlue from "../../assets/images/icons/arrow_right_blue.svg";
+import AddToCartIcon from "../../assets/images/icons/add_to_cart.svg";
+import emptyHeartIcon from "../../assets/images/product/empty_heart.svg";
+import solidHeartIcon from "../../assets/images/product/solid_heart.svg";
+import { useState } from "react";
+
+function Product() {
+  const { productId } = useParams();
+  const currentProduct = mergedMainItemInfo.find((item) => item.id === Number(productId));
+  const [quantity, setQuantity] = useState(1);
+  const [likeStatus, setLikeStatus] = useState(false);
+  const [likes, setLikes] = useState(currentProduct?.likes);
+
+  function addLike() {
+    setLikeStatus((likeStatus) => !likeStatus);
+    setLikes((likes) => likes + 1);
+  }
+
+  function removeLike() {
+    setLikeStatus((likeStatus) => !likeStatus);
+    setLikes((likes) => likes - 1);
+  }
+
+  function handleSubtractQuantity() {
+    if (quantity === 1) return;
+    setQuantity((quantity) => quantity - 1);
+  }
+
+  function handleAddQuantity() {
+    if (quantity === currentProduct?.remaining) return;
+    setQuantity((quantity) => quantity + 1);
+  }
+  return (
+    <div className={styles.productWrap}>
+      <div className="container">
+        <div className={styles.productMainContent}>
+          <div className={styles.productMainContentLeft}>
+            <div className={styles.item}>
+              <div className={styles.itemImgWrap}>
+                <img className={styles.itemImg} src={currentProduct?.img} alt="" />
+                <div className={styles.bottomLeftImgWrap}>
+                  <img className={styles.bottomLeftImg} src={currentProduct?.bottomLeftImg} alt="" />
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.shareSection}>
+              <div className={styles.platforms}>
+                <div>分享:</div>
+                <div className={styles.platformsInner}>
+                  <button className={styles.platform}></button>
+                  <button className={styles.platform}></button>
+                  <button className={styles.platform}></button>
+                  <button className={styles.platform}></button>
+                </div>
+              </div>
+              <div className={styles.likes}>
+                {!likeStatus ? <img src={emptyHeartIcon} alt="" onClick={() => addLike()} /> : <img src={solidHeartIcon} alt="" onClick={() => removeLike()} />}
+                {/* <img src={emptyHeartIcon} alt="" /> */}
+                喜歡 ({likes})
+              </div>
+            </div>
+          </div>
+          <div className={styles.productMainContentRight}>
+            <div className={styles.itemName}>{currentProduct?.name}</div>
+            <div className={styles.itemPrice}>
+              <span className={styles.currentPrice}>${currentProduct?.price}</span>
+              <span className={styles.originalPrice}>${((currentProduct?.price * 10) / currentProduct?.discount).toFixed(0)}</span>
+              {currentProduct?.discount && <span className={styles.discount}>{currentProduct?.discount}折</span>}
+            </div>
+            <div className={styles.itemDetails}>
+              <div className={styles.detail}>
+                <div className={styles.detailTitle}>分期0利率</div>
+                <div className={styles.installment}>
+                  3期x ${Math.ceil(currentProduct?.price / 3)} (0利率){" "}
+                  <a href="" className={styles.allPlans}>
+                    查看全部方案
+                    <img src={arrowRightBlue} alt="" />
+                  </a>
+                </div>
+              </div>
+              <div className={styles.detail}>
+                <div className={styles.detailTitle}>運送</div>
+                <div className={styles.shipping}>
+                  <img src={truckIcon} alt="" />
+                  <div className={styles.shippingContent}>
+                    <div>預計配達時間 1月14日 - 1月16日</div>
+                    <div>運費：$0 起</div>
+                    <div className={styles.notes}>如果訂單未能準時配達，您可以領取 $10 優惠券作為補償</div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.detail}>
+                <div className={styles.detailTitle}>服務與保障</div>
+                <div className={styles.refund}>
+                  <img src={shieldIcon} alt="" />
+                  <div>蝦皮放心買 · 蝦皮安心退</div>
+                  <svg viewBox="0 0 12 12" fill="none" width="12" height="12" color="#0000008a">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8.146L11.146 3l.707.707-5.146 5.147a1 1 0 01-1.414 0L.146 3.707.854 3 6 8.146z" fill="currentColor"></path>
+                  </svg>
+                </div>
+              </div>
+              <div className={styles.detail}>
+                <div className={styles.detailTitle}>數量</div>
+                <div className={styles.quantity}>
+                  <div className={styles.quantityAdjustment}>
+                    <button onClick={() => handleSubtractQuantity()}>
+                      <svg width="10" height="10" enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" fill="rgba(0, 0, 0, 0.8)">
+                        <polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5"></polygon>
+                      </svg>
+                    </button>
+                    <div className={styles.inputWrap}>
+                      <input value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
+                    </div>
+                    <button onClick={() => handleAddQuantity()}>
+                      <svg width="10" height="10" enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" fill="rgba(0, 0, 0, 0.8)">
+                        <polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5"></polygon>
+                      </svg>
+                    </button>
+                  </div>
+                  <div className={styles.remaining}>還剩 {currentProduct?.remaining} 件</div>
+                </div>
+              </div>
+            </div>
+            <div className={styles.itemActions}>
+              <button className={styles.addToCart}>
+                <img src={AddToCartIcon} alt="" />
+                加入購物車
+              </button>
+              <button className={styles.buyNow}>直接購買</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Product;
