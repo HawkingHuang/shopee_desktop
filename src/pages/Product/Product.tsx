@@ -7,6 +7,8 @@ import arrowRightBlue from "../../assets/images/icons/arrow_right_blue.svg";
 import AddToCartIcon from "../../assets/images/icons/add_to_cart.svg";
 import emptyHeartIcon from "../../assets/images/product/empty_heart.svg";
 import solidHeartIcon from "../../assets/images/product/solid_heart.svg";
+import arrowBreadcrumb from "../../assets/images/product/arrow_breadcrumb.svg";
+import ratingStarIcon from "../../assets/images/product/rating_star.svg";
 import { useState } from "react";
 
 function Product() {
@@ -38,6 +40,15 @@ function Product() {
   return (
     <div className={styles.productWrap}>
       <div className="container">
+        <div className={styles.breadcrumb}>
+          {currentProduct?.breadcrumb.map((bread) => (
+            <div key={bread} className={styles.bread}>
+              <span>{bread}</span>
+              <img src={arrowBreadcrumb} alt="" />
+            </div>
+          ))}
+          <div className={styles.productName}>{currentProduct?.name}</div>
+        </div>
         <div className={styles.productMainContent}>
           <div className={styles.productMainContentLeft}>
             <div className={styles.item}>
@@ -61,13 +72,30 @@ function Product() {
               </div>
               <div className={styles.likes}>
                 {!likeStatus ? <img src={emptyHeartIcon} alt="" onClick={() => addLike()} /> : <img src={solidHeartIcon} alt="" onClick={() => removeLike()} />}
-                {/* <img src={emptyHeartIcon} alt="" /> */}
                 喜歡 ({likes})
               </div>
             </div>
           </div>
           <div className={styles.productMainContentRight}>
             <div className={styles.itemName}>{currentProduct?.name}</div>
+            <div className={styles.rating}>
+              <div className={styles.ratingStar}>
+                <div className={styles.ratingNumber}>5.0</div>
+                <div className={styles.stars}>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <img src={ratingStarIcon} alt="" key={index} />
+                  ))}
+                </div>
+              </div>
+              <div className={styles.comments}>
+                <div className={styles.commentsNumber}>{currentProduct?.comments}</div>
+                <span>評價</span>
+              </div>
+              <div className={styles.sold}>
+                <div className={styles.soldNumber}>{currentProduct?.sold}</div>
+                <span>已售出</span>
+              </div>
+            </div>
             <div className={styles.itemPrice}>
               <span className={styles.currentPrice}>${currentProduct?.price}</span>
               <span className={styles.originalPrice}>${((currentProduct?.price * 10) / currentProduct?.discount).toFixed(0)}</span>
