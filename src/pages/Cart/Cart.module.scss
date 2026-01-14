@@ -1,0 +1,310 @@
+.cartWrap {
+  margin-top: 120px;
+  padding-top: 20px;
+  background-color: #f5f5f5;
+  :global(.container) {
+    .tableHeadWrap {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      background-color: var(--color-white);
+      border-radius: 3px;
+
+      input {
+        transform: scale(1.5);
+        border: 1px solid #00000024;
+        accent-color: #ee4d2d;
+      }
+
+      div:nth-child(1) {
+        text-align: center;
+        width: 8%;
+      }
+
+      div:nth-child(2) {
+        width: 43%;
+        text-align: start;
+        color: #000c;
+      }
+
+      div:nth-child(3) {
+        width: 14%;
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+      }
+
+      div:nth-child(4) {
+        width: 14%;
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+      }
+
+      div:nth-child(5) {
+        width: 10%;
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+      }
+
+      div:nth-child(6) {
+        width: 11%;
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+      }
+    }
+
+    .productInfo {
+      margin-bottom: 15px;
+      border-radius: 3px;
+      background-color: var(--color-white);
+
+      .sellerWrap {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid #00000017;
+
+        input {
+          transform: scale(1.5);
+          border: 1px solid #00000024;
+          accent-color: #ee4d2d;
+        }
+
+        div:nth-child(1) {
+          text-align: center;
+          width: 8%;
+        }
+
+        div:nth-child(2) {
+          display: flex;
+          width: 43%;
+        }
+      }
+
+      .tableItemWrap {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid #00000017;
+
+        input {
+          transform: scale(1.5);
+          border: 1px solid #00000024;
+          accent-color: #ee4d2d;
+        }
+
+        div:nth-child(1) {
+          text-align: center;
+          width: 8%;
+        }
+
+        div:nth-child(2) {
+          display: flex;
+          width: 43%;
+
+          img {
+            width: 80px;
+            object-fit: contain;
+          }
+
+          .product {
+            display: flex;
+            flex-direction: column;
+            padding: 0 10px;
+            .productName {
+              width: 100%;
+              min-width: 0;
+              color: #000000de;
+              font-size: 14px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              display: -webkit-box;
+            }
+
+            img {
+              width: 180px;
+              height: 18px;
+            }
+          }
+        }
+
+        div:nth-child(3) {
+          width: 14%;
+          text-align: center;
+          font-size: 14px;
+          color: #000000de;
+        }
+
+        .quantity {
+          width: 14%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2px;
+
+          .quantityAdjustment {
+            display: flex;
+            color: #ccc;
+            width: 75%;
+
+            button {
+              background: none;
+              border-color: #00000017;
+              width: 32px;
+              height: 32px;
+              border-width: 1px;
+              cursor: pointer;
+            }
+
+            button:first-child {
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0;
+            }
+
+            button:last-child {
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+            }
+
+            .inputWrap {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 1px solid #00000017;
+              height: 32px;
+              width: 50px;
+              box-sizing: border-box;
+              border-right: none;
+              border-left: none;
+              overflow: hidden;
+              input {
+                text-align: center;
+                color: #000c;
+                width: 100%;
+                border: none;
+                font-size: 16px;
+                transform: none;
+
+                &:focus {
+                  outline: none;
+                  border: none;
+                }
+              }
+            }
+          }
+
+          .remaining {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            color: #ee4d2d;
+            font-size: 0.8125rem;
+          }
+        }
+
+        .deleteWrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .delete {
+            text-wrap: nowrap;
+            width: 100%;
+            color: #000c;
+            cursor: pointer;
+
+            &:hover {
+              color: #ee4d2d;
+            }
+          }
+
+          .similar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            color: #ee4d2d;
+
+            img {
+              width: 10px;
+              height: 14px;
+            }
+          }
+        }
+
+        div:nth-child(5) {
+          width: 10%;
+          text-align: center;
+          font-size: 14px;
+          color: #ee4d2d;
+        }
+
+        div:nth-child(6) {
+          width: 11%;
+          text-align: center;
+          font-size: 14px;
+          color: #888;
+        }
+      }
+
+      .couponWrap {
+        display: flex;
+        align-items: center;
+        padding: 18px 20px;
+        border-bottom: 1px solid #00000017;
+
+        div:nth-child(1) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 8%;
+        }
+
+        div:nth-child(2) {
+          display: flex;
+          width: 43%;
+          color: #05a;
+          font-size: 0.875rem;
+        }
+      }
+
+      .shippingWrap {
+        display: flex;
+        align-items: center;
+        padding: 18px 20px;
+
+        div:nth-child(1) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 8%;
+
+          img {
+            width: 21px;
+            height: 20px;
+          }
+        }
+
+        div:nth-child(2) {
+          display: flex;
+          gap: 8px;
+          width: 43%;
+          font-size: 0.875rem;
+          color: #000c;
+
+          span {
+            color: #05a;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import styles from "./Product.module.scss";
 import { mergedMainItemInfo } from "../../components/DailyNew/merchandise";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import truckIcon from "../../assets/images/product/truck.svg";
 import shieldIcon from "../../assets/images/product/shield.svg";
 import arrowRightBlue from "../../assets/images/icons/arrow_right_blue.svg";
@@ -10,13 +10,17 @@ import solidHeartIcon from "../../assets/images/product/solid_heart.svg";
 import arrowBreadcrumb from "../../assets/images/product/arrow_breadcrumb.svg";
 import ratingStarIcon from "../../assets/images/product/rating_star.svg";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/cartSlice";
 
 function Product() {
+  const dispatch = useDispatch();
   const { productId } = useParams();
   const currentProduct = mergedMainItemInfo.find((item) => item.id === Number(productId));
   const [quantity, setQuantity] = useState(1);
   const [likeStatus, setLikeStatus] = useState(false);
   const [likes, setLikes] = useState(currentProduct?.likes);
+  const navigate = useNavigate();
 
   function addLike() {
     setLikeStatus((likeStatus) => !likeStatus);
@@ -36,6 +40,15 @@ function Product() {
   function handleAddQuantity() {
     if (quantity === currentProduct?.remaining) return;
     setQuantity((quantity) => quantity + 1);
+  }
+
+  function handleAddtoCart() {
+    dispatch(addToCart(currentProduct?.id, currentProduct?.seller, currentProduct?.img, currentProduct?.name, currentProduct?.price, quantity, currentProduct?.remaining));
+  }
+
+  function handleBuyNow() {
+    handleAddtoCart();
+    navigate("/cart");
   }
   return (
     <div className={styles.productWrap}>
@@ -156,11 +169,13 @@ function Product() {
               </div>
             </div>
             <div className={styles.itemActions}>
-              <button className={styles.addToCart}>
+              <button className={styles.addToCart} onClick={() => handleAddtoCart()}>
                 <img src={AddToCartIcon} alt="" />
                 加入購物車
               </button>
-              <button className={styles.buyNow}>直接購買</button>
+              <button className={styles.buyNow} onClick={() => handleBuyNow()}>
+                直接購買
+              </button>
             </div>
           </div>
         </div>
