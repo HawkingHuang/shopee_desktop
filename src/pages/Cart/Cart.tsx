@@ -4,7 +4,9 @@ import freeShippingPNG from "@/assets/images/cart/free_shipping.png";
 import couponIcon from "@/assets/images/cart/coupon.svg";
 import truckIcon from "@/assets/images/cart/truck.webp";
 import arrowDownOrangeIcon from "@/assets/images/cart/arrow_down_orange.svg";
-import { useState } from "react";
+import coinIcon from "@/assets/images/cart/coin.svg";
+import questionIcon from "@/assets/images/cart/question.svg";
+import { useEffect, useRef, useState } from "react";
 import { decreaseQuantity, deleteFromCart, increaseQuantity } from "../../store/cartSlice";
 
 function formatNumber(num) {
@@ -16,6 +18,22 @@ function Cart() {
   const dispatch = useDispatch();
   const [selectedIds, setSelectedIds] = useState([]);
   const isAllChecked = selectedIds.length === cart.length;
+
+  const sentinelRef = useRef(null);
+  const checkoutRef = useRef(null);
+  const [isStuck, setIsStuck] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsStuck(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    if (sentinelRef.current) observer.observe(sentinelRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   function toggleAll() {
     setSelectedIds((prev) => (prev.length === cart.length ? [] : cart.map((item) => item.id)));
@@ -34,6 +52,8 @@ function Cart() {
     if (quantity === remaining) return;
     dispatch(increaseQuantity(id));
   }
+
+  const totalPrice = cart.filter((item) => selectedIds.includes(item.id)).reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div className={styles.cartWrap}>
@@ -116,6 +136,43 @@ function Cart() {
             </div>
           </>
         ))}
+        <div ref={checkoutRef} className={`${styles.checkoutWrap} ${isStuck ? styles.isStuck : ""}`}>
+          <div className={styles.firstRow}>
+            <div className={styles.couponAll}>
+              <img src={couponIcon} alt="" />
+              全站優惠券
+            </div>
+            <div className={styles.chooseCoupon}>選擇優惠券或輸入優惠代碼</div>
+          </div>
+          <div className={styles.dashedBorder}></div>
+          <div className={styles.secondRowLeft}>
+            <div className={styles.fakeCheckbox}></div>
+          </div>
+          <div className={styles.secondRowRight}>
+            <div className={styles.shopeeCoin}>
+              <img src={coinIcon} alt="" />
+              <div>蝦幣</div>
+            </div>
+            <div className={styles.noItemSelected}>
+              <div>尚未選擇商品</div>
+              <img src={questionIcon} alt="" />
+            </div>
+          </div>
+          <div className={styles.dashedBorder}></div>
+          <div className={styles.thirdRow}>
+            <div className={styles.thirdRowLeft}>
+              <input type="checkbox" className={styles.checkbox} checked={isAllChecked} onChange={toggleAll} />
+              <div>全選 ({cart.length})</div>
+            </div>
+            <div className={styles.thirdRowRight}>
+              <div className={styles.totalPrice}>
+                總金額 ({selectedIds.length}件商品): <span>${formatNumber(totalPrice)}</span>
+              </div>
+              <button className={styles.checkout}>去買單</button>
+            </div>
+          </div>
+        </div>
+        <div ref={sentinelRef} style={{ height: 1 }} />
       </div>
     </div>
   );
