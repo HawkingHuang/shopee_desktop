@@ -256,6 +256,7 @@
           animation-duration: 300ms;
           animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
           will-change: transform, opacity;
+          z-index: 1;
         }
 
         .hoverCard[data-state="open"] {
@@ -380,10 +381,132 @@
         display: flex;
         justify-content: center;
         margin-bottom: 15px;
-        img {
+
+        .cartPanel {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--color-white);
+          border-radius: 2px;
+          box-shadow: 0 6px 30px rgba(0, 0, 0, 0.14);
+          padding: 6px 0;
+          width: 405px;
+          min-height: 240px;
+          max-height: 360px;
+          overflow: auto;
+
+          .arrow {
+            width: 20px;
+            height: 8px;
+            fill: var(--color-white);
+          }
+        }
+
+        .cartPanelList {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          .cartPanelTitle {
+            font-size: 0.875rem;
+            color: rgba(0, 0, 0, 0.25);
+            padding: 8px 12px;
+          }
+
+          .cartPanelItem {
+            display: flex;
+            gap: 12px;
+            padding: 12px 10px;
+            align-items: start;
+            .cartPanelItemImage {
+              width: 48px;
+              height: 48px;
+              padding: 1px;
+              object-fit: contain;
+              flex-shrink: 0;
+              border: 1px solid #f0f0f0;
+            }
+
+            .cartPanelItemName {
+              flex: 1;
+              min-width: 0;
+              font-size: 14px;
+              color: rgba(0, 0, 0, 0.8);
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            .cartPanelItemPrice {
+              color: var(--color-primary);
+              font-size: 0.875rem;
+              flex-shrink: 0;
+            }
+
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.04);
+            }
+          }
+
+          .cartPanelEmpty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #222;
+            font-size: 14px;
+
+            img {
+              width: 6.25rem;
+              height: 6.125rem;
+            }
+          }
+        }
+
+        .cartPanelFooter {
+          padding: 8px;
+          display: flex;
+          justify-content: end;
+
+          .cartPanelFooterLink {
+            text-decoration: none;
+            color: var(--color-white);
+            background-color: var(--color-primary);
+            padding: 6px 14px;
+            border-radius: 2px;
+            font-size: 0.875rem;
+
+            &:hover {
+              background-color: #e03e2f;
+            }
+          }
+        }
+
+        .cartIconWrap {
+          position: relative;
           cursor: pointer;
-          height: 26px;
-          width: 26px;
+          img {
+            height: 26px;
+            width: 26px;
+          }
+
+          .cartItemCount {
+            position: absolute;
+            top: -8px;
+            right: -14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            font-size: 0.875rem;
+            border: 0.125rem solid var(--color-primary);
+            border-radius: 2.75rem;
+            width: 24px;
+            height: 19px;
+            box-sizing: border-box;
+          }
         }
       }
     }

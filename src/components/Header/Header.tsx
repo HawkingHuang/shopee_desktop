@@ -8,6 +8,7 @@ import mainLogoIcon from "@/assets/images/icons/main_logo.svg";
 import searchIcon from "@/assets/images/icons/search.svg";
 import cartIcon from "@/assets/images/icons/cart.svg";
 import avatarIcon from "@/assets/images/icons/avatar.svg";
+import emptyCartPNG from "@/assets/images/cart/empty_cart.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/authSlice";
 import * as HoverCard from "@radix-ui/react-hover-card";
@@ -24,6 +25,10 @@ import notificationTwo from "@/assets/images/header/notifications/2.png";
 const hotKeywords = ["手機殼", "美式衣服", "藍芽耳機", "曠野之心", "行動電源", "iPhone 14pro Max", "外套", "質感手機殼", "存錢本", "好看水壺", "流行服飾"];
 
 function Header() {
+  const cart = useSelector((state) => state.cart);
+  function formatNumber(num) {
+    return new Intl.NumberFormat("en-US").format(num);
+  }
   const navigate = useNavigate();
   const { isLogin, username } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -190,7 +195,44 @@ function Header() {
               </div>
             </div>
             <div className={styles.headerCart} onClick={() => navigate(isLogin ? "/cart" : "/login")}>
-              <img src={cartIcon} alt="" />
+              <HoverCard.Root openDelay={100} closeDelay={100}>
+                <HoverCard.Trigger asChild>
+                  <div className={styles.cartIconWrap}>
+                    <img src={cartIcon} alt="" />
+                    {cart.length > 0 && <div className={styles.cartItemCount}>{cart.length}</div>}
+                  </div>
+                </HoverCard.Trigger>
+
+                <HoverCard.Content side="bottom" align="end" sideOffset={0} alignOffset={-10} className={`${styles.cartPanel} ${styles.hoverCard}`}>
+                  <HoverCard.Arrow className={styles.arrow} />
+                  <div className={styles.cartPanelList}>
+                    {cart.length === 0 ? (
+                      <div className={styles.cartPanelEmpty}>
+                        <img src={emptyCartPNG} alt="Empty cart" />
+                        尚無商品
+                      </div>
+                    ) : (
+                      <>
+                        <div className={styles.cartPanelTitle}>最近加入的商品</div>
+                        {cart.map((item) => (
+                          <div key={item.id} className={styles.cartPanelItem}>
+                            <img src={item.image} alt="" className={styles.cartPanelItemImage} />
+                            <div className={styles.cartPanelItemName}>{item.productName}</div>
+                            <div className={styles.cartPanelItemPrice}>${formatNumber(item.price)}</div>
+                          </div>
+                        ))}
+                      </>
+                    )}
+                  </div>
+                  {cart.length > 0 && (
+                    <div className={styles.cartPanelFooter}>
+                      <NavLink to="/cart" className={styles.cartPanelFooterLink}>
+                        查看我的購物車
+                      </NavLink>
+                    </div>
+                  )}
+                </HoverCard.Content>
+              </HoverCard.Root>
             </div>
           </div>
         </div>
