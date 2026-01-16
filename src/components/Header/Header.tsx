@@ -194,10 +194,10 @@ function Header() {
                 ))}
               </div>
             </div>
-            <div className={styles.headerCart} onClick={() => navigate(isLogin ? "/cart" : "/login")}>
+            <div className={styles.headerCart}>
               <HoverCard.Root openDelay={100} closeDelay={100}>
                 <HoverCard.Trigger asChild>
-                  <div className={styles.cartIconWrap}>
+                  <div className={styles.cartIconWrap} onClick={() => navigate(isLogin ? "/cart" : "/login")}>
                     <img src={cartIcon} alt="" />
                     {cart.length > 0 && <div className={styles.cartItemCount}>{cart.length}</div>}
                   </div>

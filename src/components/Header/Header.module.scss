@@ -383,15 +383,11 @@
         margin-bottom: 15px;
 
         .cartPanel {
-          display: flex;
-          align-items: center;
-          justify-content: center;
           background: var(--color-white);
           border-radius: 2px;
           box-shadow: 0 6px 30px rgba(0, 0, 0, 0.14);
           padding: 6px 0;
           width: 405px;
-          min-height: 240px;
           max-height: 360px;
           overflow: auto;
 
@@ -405,8 +401,6 @@
         .cartPanelList {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: center;
 
           .cartPanelTitle {
             font-size: 0.875rem;
@@ -415,6 +409,8 @@
           }
 
           .cartPanelItem {
+            box-sizing: border-box;
+            width: 100%;
             display: flex;
             gap: 12px;
             padding: 12px 10px;
@@ -453,9 +449,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             gap: 4px;
             color: #222;
             font-size: 14px;
+            height: 240px;
 
             img {
               width: 6.25rem;
