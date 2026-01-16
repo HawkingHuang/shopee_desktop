@@ -38,7 +38,7 @@
               cursor: pointer;
 
               &:hover {
-                color: #ee4d2d;
+                color: var(--color-primary);
               }
             }
             .separator {

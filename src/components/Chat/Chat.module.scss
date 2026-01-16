@@ -8,7 +8,7 @@
   gap: 8px;
   width: 100px;
   height: 50px;
-  color: #ee4d2d;
+  color: var(--color-primary);
   background-color: var(--color-white);
   font-size: 0.875rem;
   border-radius: 4px 4px 0 0;
@@ -85,7 +85,7 @@
 
       .reloadBtn {
         color: var(--color-white);
-        background-color: #ee4d2d;
+        background-color: var(--color-primary);
         border: 1px solid #e5e5e5;
         border-radius: 4px;
         padding: 6px 16px;
@@ -190,7 +190,7 @@
                 text-overflow: ellipsis;
 
                 .keyword {
-                  color: #ee4d2d;
+                  color: var(--color-primary);
                 }
               }
 

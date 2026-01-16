@@ -111,8 +111,8 @@
 }
 
 :global(.swiper-pagination-bullet-active) {
-  background-color: #ee4d2d !important;
-  border-color: #ee4d2d !important;
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
 }
 
 :global(.swiper-horizontal > .swiper-pagination-bullets),

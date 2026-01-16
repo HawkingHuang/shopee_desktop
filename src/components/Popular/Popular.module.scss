@@ -12,7 +12,7 @@
       margin-bottom: 20px;
 
       .popularTitleWrapLeft {
-        color: #ee4d2d;
+        color: var(--color-primary);
         font-size: 1rem;
       }
 
@@ -23,7 +23,7 @@
         white-space: nowrap;
         font-size: 0.875rem;
         font-weight: 300;
-        color: #ee4d2d;
+        color: var(--color-primary);
         cursor: pointer;
 
         svg {

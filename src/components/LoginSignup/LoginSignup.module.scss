@@ -150,7 +150,7 @@
 
           .signup {
             text-decoration: none;
-            color: #ee4d2d;
+            color: var(--color-primary);
           }
         }
 
@@ -161,7 +161,7 @@
           font-size: 12px;
 
           .term {
-            color: #ee4d2d;
+            color: var(--color-primary);
             cursor: pointer;
           }
         }
@@ -176,7 +176,7 @@
 
           .login {
             text-decoration: none;
-            color: #ee4d2d;
+            color: var(--color-primary);
           }
         }
       }

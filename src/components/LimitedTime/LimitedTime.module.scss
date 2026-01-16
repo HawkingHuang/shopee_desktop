@@ -47,7 +47,7 @@
         gap: 5px;
         white-space: nowrap;
         font-size: 0.875rem;
-        color: #ee4d2d;
+        color: var(--color-primary);
         cursor: pointer;
 
         svg {
@@ -164,7 +164,7 @@
           }
 
           .limitedItemPrice {
-            color: #ee4d2d;
+            color: var(--color-primary);
             font-size: 1.125rem;
             font-weight: 500;
             margin-bottom: 10px !important;
