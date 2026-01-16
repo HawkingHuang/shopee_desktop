@@ -189,7 +189,7 @@ function Header() {
                 ))}
               </div>
             </div>
-            <div className={styles.headerCart} onClick={() => navigate("/cart")}>
+            <div className={styles.headerCart} onClick={() => navigate(isLogin ? "/cart" : "/login")}>
               <img src={cartIcon} alt="" />
             </div>
           </div>

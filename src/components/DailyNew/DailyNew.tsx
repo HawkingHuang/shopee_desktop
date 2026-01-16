@@ -3,8 +3,10 @@ import flashIcon from "@/assets/images/daily_new/icons/flash.svg";
 import { useState } from "react";
 import { mergedMainItemInfo } from "./merchandise";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function DailyNew() {
+  const isLogin = useSelector((state) => state.auth.isLogin);
   const [isHoverIndex, setIsHoverIndex] = useState(null);
 
   const handleMouseEnter = (index: number) => {
@@ -20,7 +22,7 @@ function DailyNew() {
         <div className={styles.dailyNewTitleWrap}>每日新發現</div>
         <div className={styles.dailyNewContentWrap}>
           {mergedMainItemInfo.map((item, index) => (
-            <Link to={`/product/${item.id}`} className={styles.cardLink}>
+            <Link to={isLogin ? `/product/${item.id}` : "/login"} className={styles.cardLink}>
               <div className={styles.dailyNewItem} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave}>
                 {item.discount && <span className={styles.discount}>{item.discount}折</span>}
                 <div className={styles.dailyNewItemImgWrap}>
