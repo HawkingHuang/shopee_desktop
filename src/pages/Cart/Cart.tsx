@@ -9,12 +9,14 @@ import questionIcon from "@/assets/images/cart/question.svg";
 import emptyCartPNG from "@/assets/images/cart/empty_cart.png";
 import { useEffect, useRef, useState } from "react";
 import { decreaseQuantity, deleteFromCart, increaseQuantity, setQuantity } from "../../store/cartSlice";
+import { useLocation } from "react-router-dom";
 
 function formatNumber(num) {
   return new Intl.NumberFormat("en-US").format(num);
 }
 
 function Cart() {
+  const location = useLocation();
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const [selectedIds, setSelectedIds] = useState([]);
@@ -64,7 +66,7 @@ function Cart() {
   const totalPrice = cart.filter((item) => selectedIds.includes(item.id)).reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <div className={styles.cartWrap}>
+    <div className={styles.cartWrap} style={location.pathname === "/cart" ? { marginTop: "130px" } : {}}>
       {cart.length === 0 && (
         <div className="container">
           <div className={styles.emptyCartWrap}>

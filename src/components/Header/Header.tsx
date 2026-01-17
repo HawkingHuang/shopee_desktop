@@ -1,10 +1,11 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
 
 import bellIcon from "@/assets/images/icons/bell.svg";
 import questionCircleIcon from "@/assets/images/icons/question_circle.svg";
 import globalIcon from "@/assets/images/icons/global.svg";
 import mainLogoIcon from "@/assets/images/icons/main_logo.svg";
+import mainLogoOrangeIcon from "@/assets/images/icons/main_logo_orange.svg";
 import searchIcon from "@/assets/images/icons/search.svg";
 import cartIcon from "@/assets/images/icons/cart.svg";
 import avatarIcon from "@/assets/images/icons/avatar.svg";
@@ -26,6 +27,7 @@ const hotKeywords = ["手機殼", "美式衣服", "藍芽耳機", "曠野之心"
 
 function Header() {
   const cart = useSelector((state) => state.cart);
+  const location = useLocation();
   function formatNumber(num) {
     return new Intl.NumberFormat("en-US").format(num);
   }
@@ -33,7 +35,7 @@ function Header() {
   const { isLogin, username } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  return (
+  return location.pathname !== "/cart" ? (
     <header className={styles.headerWrap}>
       <div className="container">
         <div className={styles.headerWrapUpper}>
@@ -233,6 +235,169 @@ function Header() {
                   )}
                 </HoverCard.Content>
               </HoverCard.Root>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  ) : (
+    <header className={styles.headerWrapCart}>
+      <div className={styles.headerWrapUpper}>
+        <div className="container">
+          <div className={styles.headerLeft}>
+            <NavLink to="/" className="navLink">
+              賣家中心
+            </NavLink>
+            {!isLogin && (
+              <NavLink to="/" className="navLink">
+                開始隨拍即賣囉!
+              </NavLink>
+            )}
+            <HoverCard.Root openDelay={100} closeDelay={100}>
+              <HoverCard.Trigger asChild>
+                <NavLink to="/" className="navLink">
+                  下載
+                </NavLink>
+              </HoverCard.Trigger>
+
+              <HoverCard.Content side="bottom" align="start" sideOffset={4} className={`${styles.downloadPanel} ${styles.hoverCard}`}>
+                <img src={qrcodePNG} alt="" className={styles.qrCode} />
+                <div className={styles.appWrap}>
+                  <img src={appStorePNG} alt="" />
+                  <img src={googlePlayPNG} alt="" />
+                  <img src={appGalleryPNG} alt="" />
+                </div>
+              </HoverCard.Content>
+            </HoverCard.Root>
+            <div className="navLink">
+              追蹤我們
+              <div className="socialMediaGroup">
+                <a href="https://facebook.com/ShopeeTW" className="facebook"></a>
+                <a href="https://instagram.com/Shopee_TW" className="instagram"></a>
+                <a href="https://line.me/R/ti/p/@shopee" className="line"></a>
+              </div>
+            </div>
+          </div>
+          <div className={styles.headerRight}>
+            <HoverCard.Root openDelay={100} closeDelay={100}>
+              <HoverCard.Trigger asChild>
+                <NavLink to="/" className="navLink">
+                  <img src={bellIcon} alt="" />
+                  通知總覽
+                </NavLink>
+              </HoverCard.Trigger>
+
+              <HoverCard.Content side="bottom" align="end" sideOffset={4} className={`${styles.notificationPanel} ${styles.hoverCard}`}>
+                <HoverCard.Arrow className={styles.arrow} />
+
+                {!isLogin ? (
+                  <div className={styles.imgWrap}>
+                    <div className={styles.imgWrapInner}>
+                      <img src={notiNotLoginPNG} alt="" />
+                      <div>要看通知訊息，請先登入</div>
+                    </div>
+                    <div className={styles.btnWrap}>
+                      <NavLink to="/signup">註冊</NavLink>
+                      <NavLink to="/login">登入</NavLink>
+                    </div>
+                  </div>
+                ) : (
+                  <div className={styles.notificationList}>
+                    <div className={styles.notificationTitle}>最近收到的通知</div>
+                    <div className={styles.notificationItem}>
+                      <img src={notificationOne} alt="" />
+                      <div className={styles.itemRight}>
+                        <div className={styles.itemTitle}>驚！1/11神券已送達</div>
+                        <div className={styles.itemContent}>天降好禮!請簽收全站滿千折$100、商城滿千折$200優惠券，記得1/11回來下單</div>
+                      </div>
+                    </div>
+                    <div className={styles.notificationItem}>
+                      <img src={notificationTwo} alt="" />
+                      <div className={styles.itemRight}>
+                        <div className={styles.itemTitle}>輝葉品牌日！年節備戰電動麻將桌下殺</div>
+                        <div className={styles.itemContent}>品牌日一日限定📢小沙發按摩椅$19,999，年節必備電動麻將桌也只要$19,999，手刀點我下單👉</div>
+                      </div>
+                    </div>
+                    <NavLink to="/" className={styles.notificationMore}>
+                      查看全部
+                    </NavLink>
+                  </div>
+                )}
+              </HoverCard.Content>
+            </HoverCard.Root>
+            <NavLink to="/" className="navLink">
+              <img src={questionCircleIcon} alt="" />
+              幫助中心
+            </NavLink>
+            <HoverCard.Root openDelay={100} closeDelay={100}>
+              <HoverCard.Trigger asChild>
+                <NavLink to="/" className="navLink">
+                  <img src={globalIcon} alt="" />
+                  繁體中文
+                  <svg viewBox="0 0 12 12" fill="none" width="12" height="12" color="currentColor">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8.146L11.146 3l.707.707-5.146 5.147a1 1 0 01-1.414 0L.146 3.707.854 3 6 8.146z" fill="currentColor"></path>
+                  </svg>
+                </NavLink>
+              </HoverCard.Trigger>
+
+              <HoverCard.Content side="bottom" align="end" sideOffset={0} className={`${styles.languagePanel} ${styles.hoverCard}`}>
+                <HoverCard.Arrow className={styles.arrow} />
+
+                <ul className={styles.languageList}>
+                  <li>English</li>
+                  <li className={styles.active}>繁體中文</li>
+                  <li>简体中文</li>
+                </ul>
+              </HoverCard.Content>
+            </HoverCard.Root>
+
+            {!isLogin && (
+              <>
+                <NavLink to="/signup" className="navLink">
+                  註冊
+                </NavLink>
+                <NavLink to="/login" className={`navLink ${!isLogin ? styles.withBar : ""}`}>
+                  登入
+                </NavLink>
+              </>
+            )}
+            {isLogin && (
+              <HoverCard.Root openDelay={100} closeDelay={100}>
+                <HoverCard.Trigger asChild>
+                  <NavLink to="/" className="navLink">
+                    <img src={avatarIcon} alt="" className={styles.avatar} />
+                    {username}
+                  </NavLink>
+                </HoverCard.Trigger>
+
+                <HoverCard.Content side="bottom" align="end" sideOffset={0} className={`${styles.accountPanel} ${styles.hoverCard}`}>
+                  <HoverCard.Arrow className={styles.arrow} />
+
+                  <ul className={styles.accountList}>
+                    <li>我的帳戶</li>
+                    <li>購買清單</li>
+                    <li onClick={() => dispatch(logout())}>登出</li>
+                  </ul>
+                </HoverCard.Content>
+              </HoverCard.Root>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className={styles.bgWhiteSection}>
+        <div className="container">
+          <div className={styles.headerWrapLower}>
+            <div className={styles.headerLogo} onClick={() => navigate("/")}>
+              <img src={mainLogoOrangeIcon} alt="" />
+              <div className={styles.headerCartText}>購物車</div>
+            </div>
+            <div className={styles.headerSearch}>
+              <form className={styles.headerSearchInputForm} action="">
+                <input className={styles.headerSearchInput} type="text" placeholder="蝦皮直營 用券0門檻最高折$100" />
+                <button className={styles.headerSearchButton}>
+                  <img src={searchIcon} alt="" />
+                </button>
+              </form>
             </div>
           </div>
         </div>
