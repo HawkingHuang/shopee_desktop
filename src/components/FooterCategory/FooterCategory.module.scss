@@ -1,4 +1,10 @@
+@use "@/assets/styles/mixins" as *;
+
 .footerCategoryWrap {
+  @include respond-1280 {
+    @include pageGutter;
+  }
+
   :global(.container) {
     padding-bottom: 85px;
     .footerCategoryTitleWrap {

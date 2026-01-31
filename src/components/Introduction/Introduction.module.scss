@@ -1,6 +1,12 @@
+@use "@/assets/styles/mixins" as *;
+
 .introductionWrap {
   padding-top: 65px;
   border-top: 4px solid var(--color-primary);
+
+  @include respond-1280 {
+    @include pageGutter;
+  }
 
   :global(.container) {
     background-color: var(--color-white);

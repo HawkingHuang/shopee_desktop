@@ -1,7 +1,13 @@
+@use "@/assets/styles/mixins" as *;
+
 .topBannerWrap {
   margin-top: 130px;
   padding-top: 20px;
   padding-bottom: 25px;
+
+  @include respond-1280 {
+    @include pageGutter;
+  }
 
   :global(.container) {
     .topBannerCarouselWrap {

@@ -2,6 +2,7 @@
   :global(.container) {
     .officialImg {
       display: block;
+      width: 100%;
     }
     .main {
       width: 100%;
@@ -105,6 +106,9 @@
           }
         }
       }
+    }
+    .redBgBottom {
+      width: 100%;
     }
   }
 }

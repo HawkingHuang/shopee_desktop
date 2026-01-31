@@ -18,7 +18,7 @@
 
       .cartEmptyText {
         color: #0006;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 700;
       }
 
@@ -28,7 +28,7 @@
         background-color: var(--color-primary);
         border: none;
         color: var(--color-white);
-        font-size: 16px;
+        font-size: 1rem;
         box-shadow: 0 1px 1px #00000017;
         cursor: pointer;
         font-weight: 300;
@@ -56,28 +56,28 @@
       div:nth-child(3) {
         width: 14%;
         text-align: center;
-        font-size: 14px;
+        font-size: 0.875rem;
         color: #888;
       }
 
       div:nth-child(4) {
         width: 14%;
         text-align: center;
-        font-size: 14px;
+        font-size: 0.875rem;
         color: #888;
       }
 
       div:nth-child(5) {
         width: 10%;
         text-align: center;
-        font-size: 14px;
+        font-size: 0.875rem;
         color: #888;
       }
 
       div:nth-child(6) {
         width: 11%;
         text-align: center;
-        font-size: 14px;
+        font-size: 0.875rem;
         color: #888;
       }
     }
@@ -132,7 +132,7 @@
               width: 100%;
               min-width: 0;
               color: #000000de;
-              font-size: 14px;
+              font-size: 0.875rem;
               overflow: hidden;
               text-overflow: ellipsis;
               -webkit-box-orient: vertical;
@@ -150,7 +150,7 @@
         div:nth-child(3) {
           width: 14%;
           text-align: center;
-          font-size: 14px;
+          font-size: 0.875rem;
           color: #000000de;
         }
 
@@ -202,7 +202,7 @@
                 color: #000c;
                 width: 100%;
                 border: none;
-                font-size: 16px;
+                font-size: 1rem;
                 transform: none;
 
                 &:focus {
@@ -256,14 +256,14 @@
         div:nth-child(5) {
           width: 10%;
           text-align: center;
-          font-size: 14px;
+          font-size: 0.875rem;
           color: var(--color-primary);
         }
 
         div:nth-child(6) {
           width: 11%;
           text-align: center;
-          font-size: 14px;
+          font-size: 0.875rem;
           color: #888;
         }
       }
@@ -362,7 +362,7 @@
 
         .chooseCoupon {
           color: #05a;
-          font-size: 14px;
+          font-size: 0.875rem;
           cursor: pointer;
         }
       }
@@ -394,14 +394,14 @@
           display: flex;
           gap: 10px;
           opacity: 0.2;
-          font-size: 14px;
+          font-size: 0.875rem;
         }
 
         .noItemSelected {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 14px;
+          font-size: 0.875rem;
           color: #929292;
 
           img {
@@ -432,11 +432,11 @@
             align-items: center;
             gap: 6px;
             color: #222;
-            font-size: 16px;
+            font-size: 1rem;
 
             span {
               color: var(--color-primary);
-              font-size: 24px;
+              font-size: 1.5rem;
             }
           }
 
@@ -447,7 +447,7 @@
             background-color: var(--color-primary);
             border: none;
             color: var(--color-white);
-            font-size: 14px;
+            font-size: 0.875rem;
             cursor: pointer;
           }
         }

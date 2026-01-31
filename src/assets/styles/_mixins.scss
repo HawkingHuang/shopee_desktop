@@ -1,0 +1,12 @@
+@use "./variables" as *;
+
+@mixin pageGutter {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+@mixin respond-1280 {
+  @media (max-width: $bp-1280) {
+    @content;
+  }
+}

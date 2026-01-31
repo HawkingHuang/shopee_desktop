@@ -1,14 +1,19 @@
 @use "./variables";
+@use "./mixins" as *;
 
 html {
   font-family: Arial, "Microsoft JhengHei", "PingFang TC", "Hiragino Sans GB", sans-serif;
+
+  @include respond-1280 {
+    font-size: 80%;
+  }
 }
 
 body {
   margin: 0;
 
   .container {
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 

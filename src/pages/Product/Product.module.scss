@@ -13,7 +13,7 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        font-size: 13px;
+        font-size: 0.8125rem;
         color: #05a;
         cursor: pointer;
       }
@@ -77,7 +77,7 @@
             gap: 4px;
             width: 50%;
             color: #222;
-            font-size: 16px;
+            font-size: 1rem;
             border-right: 1px solid #00000017;
 
             .platformsInner {
@@ -133,7 +133,7 @@
         gap: 10px;
 
         .itemName {
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 500;
         }
 
@@ -215,13 +215,13 @@
 
           .currentPrice {
             color: var(--color-primary);
-            font-size: 30px;
+            font-size: 1.875rem;
             font-weight: 400;
           }
 
           .originalPrice {
             color: #929292;
-            font-size: 16px;
+            font-size: 1rem;
             text-decoration: line-through;
           }
 
@@ -230,7 +230,7 @@
             background-color: #feeeea;
             border-radius: 2px;
             padding: 0 4px;
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 600;
           }
         }
@@ -287,7 +287,7 @@
 
                 .notes {
                   color: #0000008a;
-                  font-size: 12px;
+                  font-size: 0.75rem;
                 }
               }
             }
@@ -343,7 +343,7 @@
                     color: var(--color-primary);
                     width: 100%;
                     border: none;
-                    font-size: 16px;
+                    font-size: 1rem;
 
                     &:focus {
                       outline: none;
@@ -379,7 +379,7 @@
             width: 180px;
             height: 48px;
             border-radius: 2px;
-            font-size: 14px;
+            font-size: 0.875rem;
             cursor: pointer;
 
             &:hover {
@@ -398,7 +398,7 @@
             height: 48px;
             border-radius: 2px;
             border: 0;
-            font-size: 14px;
+            font-size: 0.875rem;
             cursor: pointer;
 
             &:hover {
