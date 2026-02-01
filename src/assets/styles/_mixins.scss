@@ -10,3 +10,9 @@
     @content;
   }
 }
+
+@mixin respond-960 {
+  @media (max-width: $bp-960) {
+    @content;
+  }
+}

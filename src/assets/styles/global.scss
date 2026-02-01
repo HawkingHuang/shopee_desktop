@@ -7,6 +7,10 @@ html {
   @include respond-1280 {
     font-size: 80%;
   }
+
+  @include respond-960 {
+    font-size: 62.5%;
+  }
 }
 
 body {
