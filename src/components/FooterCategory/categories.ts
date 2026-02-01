@@ -1,4 +1,9 @@
-export const firstColumn = [
+type FooterCategory = {
+  name: string;
+  sub: string[];
+};
+
+export const firstColumn: FooterCategory[] = [
   {
     name: "女生衣著",
     sub: ["T恤", "長褲", "內睡衣", "外套", "其他", "針織/毛衣", "多件式套裝", "大尺碼", "小可愛/背心", "帽T/大學T", "泳裝/比基尼", "短褲", "洋裝", "裙子", "上衣類", "禮衫"],
@@ -20,7 +25,7 @@ export const firstColumn = [
     sub: ["大型家電", "廚房家電", "影音設備", "生活家電", "美容/健康家電", "電視機", "音響、喇叭", "電風扇", "電毯/電暖器", "清淨除濕", "其他"],
   },
 ];
-export const secondColumn = [
+export const secondColumn: FooterCategory[] = [
   {
     name: "書籍及雜誌期刊",
     sub: [
@@ -88,7 +93,7 @@ export const secondColumn = [
     sub: ["配件", "包包", "設計師玩具", "衣服", "數位文創商品", "設計雜物", "文具"],
   },
 ];
-export const thirdColumn = [
+export const thirdColumn: FooterCategory[] = [
   {
     name: "男生衣著",
     sub: ["T恤", "背心", "短褲", "外套", "長褲", "Polo衫", "丹寧牛仔", "其他", "帽T、大學T", "毛衣、針織衫", "男性內著", "禮衫"],
@@ -125,7 +130,7 @@ export const thirdColumn = [
     sub: ["旅遊票券", "其他", "服務、課程", "活動門票", "餐券", "禮券"],
   },
 ];
-export const fourthColumn = [
+export const fourthColumn: FooterCategory[] = [
   {
     name: "居家生活",
     sub: ["居家香氛", "水壺、杯子", "收納", "餐廚", "浴室", "燈具", "節慶、派對用品", "文具", "五金修繕", "園藝工具", "沙發、沙發床", "傢俱", "寢具", "窗簾", "其他", "居家防護", "日用品", "居家裝飾"],
@@ -147,7 +152,7 @@ export const fourthColumn = [
     sub: ["點數貼紙", "成人專區"],
   },
 ];
-export const fifthColumn = [
+export const fifthColumn: FooterCategory[] = [
   {
     name: "運動/健身",
     sub: ["健身運動器材", "球類運動", "運動服飾/配件", "運動用品", "運動健身能量補給", "運動鞋款", "運動休閒鞋款", "游泳及水類運動", "其他"],
