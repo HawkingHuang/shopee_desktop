@@ -22,8 +22,7 @@ import notiNotLoginPNG from "@/assets/images/header/noti_not_login.png";
 
 import notificationOne from "@/assets/images/header/notifications/1.jfif";
 import notificationTwo from "@/assets/images/header/notifications/2.png";
-
-const hotKeywords = ["手機殼", "美式衣服", "藍芽耳機", "曠野之心", "行動電源", "iPhone 14pro Max", "外套", "質感手機殼", "存錢本", "好看水壺", "流行服飾"];
+import { hotKeywords } from "./headerData";
 
 function Header() {
   const cart = useSelector((state) => state.cart);

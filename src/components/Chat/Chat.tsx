@@ -7,25 +7,10 @@ import chatTextIcon from "@/assets/images/icons/chat_text.svg";
 import chatTextChIcon from "@/assets/images/icons/chat_text_ch.svg";
 import arrowRightIcon from "@/assets/images/icons/arrow_right.svg";
 import arrowDownIcon from "@/assets/images/icons/arrow_down.svg";
+import { sellerList } from "./chatData";
 
 import loadingErrorPNG from "@/assets/images/chat/loading_error.png";
 import startChatIcon from "@/assets/images/chat/start_chat.svg";
-import sellerOneIcon from "@/assets/images/chat/seller_1.jfif";
-import sellerTwoIcon from "@/assets/images/chat/seller_2.jfif";
-
-const sellerList = [
-  {
-    name: "英之助日貨",
-    img: sellerOneIcon,
-    timestamp: "25/12/25",
-  },
-  {
-    name: "超級品牌運動館",
-    img: sellerTwoIcon,
-    timestamp: "25/12/25",
-  },
-];
-
 function Chat() {
   const [chatStatus, setChatStatus] = useState(true);
   const [dialogStatus, setDialogStatus] = useState(false);

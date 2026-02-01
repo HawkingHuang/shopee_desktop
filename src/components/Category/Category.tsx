@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import type { NavigationOptions } from "swiper/types";
 import { useRef, useState } from "react";
+import { categoryNames } from "./categoryData";
 
 const categoryImgs = Object.entries(
   import.meta.glob<string>("@/assets/images/category/*.webp", {
@@ -19,33 +20,6 @@ const categoryImgs = Object.entries(
     return numA - numB;
   })
   .map(([_, img]) => img);
-
-const categoryNames = [
-  "女生衣著",
-  "書籍及雜誌期刊",
-  "男生衣著",
-  "居家生活",
-  "運動/健身",
-  "美食、伴手禮",
-  "男女鞋",
-  "汽機車零件百貨",
-  "女生配件/黃金",
-  "電玩遊戲",
-  "美妝保養",
-  "保健、護理",
-  "娛樂、收藏",
-  "嬰幼童與母親",
-  "寵物",
-  "女生包包/精品",
-  "手機平板與周邊",
-  "男生包包與配件",
-  "3C與筆電",
-  "戶外/旅行",
-  "家電影音",
-  "文創商品",
-  "服務、 票券",
-  "其他類別",
-];
 
 const mergedCategory = categoryImgs.map((img, i) => ({
   name: categoryNames[i],

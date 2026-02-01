@@ -1,37 +1,5 @@
 import styles from "./Introduction.module.scss";
-
-const mayInterested = [
-  "SuperCard超級悠遊卡",
-  "mont-bell",
-  "圓山大飯店 餐券",
-  "地獄禮物",
-  "我獨自升級",
-  "Micron美光 MX500 SSD固態硬碟",
-  "銀行桌曆",
-  "木侖花生糖",
-  "2026月曆",
-  "交換禮物",
-  "GeForce RTX 5070 Ti",
-  "KODAK柯達 Charmera",
-  "GeForce RTX 3060 Ti",
-  "Kpop獵魔女團 周邊",
-  "音樂棒棒糖",
-  "二手 Nintendo Switch 主機",
-  "紅色針織洋裝",
-  "聖誕 裝飾",
-  "金沙 水晶球",
-  "7-11 福袋",
-  "香港",
-  "窗簾",
-  "Trader Joe's 購物袋",
-  "200元交換禮物",
-  "飛機杯",
-  "全家 聖誕樹",
-  "AirPods 3 保護套/殼",
-  "旭集 餐券",
-  "聖誕樹",
-  "聖誕 小禮物",
-];
+import { mayInterested } from "./introductionData";
 
 function Introduction() {
   return (

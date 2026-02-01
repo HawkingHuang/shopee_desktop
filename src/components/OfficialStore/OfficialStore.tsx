@@ -9,6 +9,7 @@ import { useRef, useState } from "react";
 import benefitOneImg from "@/assets/images/official_store/1.png";
 import benefitTwoImg from "@/assets/images/official_store/2.png";
 import benefitThreeImg from "@/assets/images/official_store/3.png";
+import { carouselRightNames } from "./officialStoreData";
 
 const carouselImgsLeft = Object.values(import.meta.glob<string>("@/assets/images/official_store/left_carousel/*.jfif", { eager: true, import: "default" }));
 
@@ -16,7 +17,7 @@ const carouselImgsRight = Object.entries(
   import.meta.glob<string>("@/assets/images/official_store/right_carousel/*.webp", {
     eager: true,
     import: "default",
-  })
+  }),
 )
   .sort(([a], [b]) => {
     const numA = parseInt(a.match(/\d+/)![0]);
@@ -24,25 +25,6 @@ const carouselImgsRight = Object.entries(
     return numA - numB;
   })
   .map(([_, img]) => img);
-
-const carouselRightNames = [
-  "最高折$6,072",
-  "搶券86折無上限",
-  "冷暖空調7折起",
-  "領券蝦幣回饋10%",
-  "健康動起來3折起",
-  "全館滿99起免運",
-  "金統納福8折起",
-  "全館299up免運",
-  "領券蝦幣回饋10%",
-  "全館優惠5折起",
-  "4折起領券再折",
-  "全館五折起",
-  "享蝦幣10倍送",
-  "破萬熱銷行動電源",
-  "領券蝦幣回饋5%",
-  "全館299up免運",
-];
 
 const mergedcarouselImgsRight = carouselImgsRight.map((img, i) => ({
   name: carouselRightNames[i],
