@@ -3,7 +3,7 @@
 .topBannerWrap {
   margin-top: 130px;
   padding-top: 20px;
-  padding-bottom: 25px;
+  padding-bottom: 20px;
 
   @include respond-1280 {
     @include pageGutter;
@@ -15,6 +15,7 @@
       display: flex;
       align-items: stretch;
       width: 100%;
+      height: 235px;
       gap: 5px;
       margin-bottom: 30px;
 
@@ -67,7 +68,7 @@
           .carouselImg {
             display: block;
             width: 100%;
-            aspect-ratio: 3.33 / 1.02;
+            aspect-ratio: 3.4 / 1;
             border-radius: 2px;
           }
         }
@@ -78,11 +79,13 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+        height: 100%;
 
         .rightBannerImg {
           display: block;
           width: 100%;
-          aspect-ratio: 3.33 / 1;
+          height: calc((100% - 5px) / 2);
+          object-fit: cover;
           border-radius: 2px;
         }
       }
