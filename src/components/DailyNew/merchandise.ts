@@ -8,7 +8,7 @@ import flagshipIcon from "@/assets/images/daily_new/info_tags/flagship.png";
 
 export type DailyNewTag = {
   name: string;
-  color: "green" | "pink" | "orange";
+  color: "green" | "pink" | "orange" | "red";
 };
 
 export type DailyNewItemBase = {
@@ -43,7 +43,7 @@ const mainItemImgs = Object.entries(
     const numB = parseInt(b.match(/\d+/)![0]);
     return numA - numB;
   })
-  .map(([_, img]) => img);
+  .map(([, img]) => img);
 
 const mainItemInfo: DailyNewItemBase[] = [
   {

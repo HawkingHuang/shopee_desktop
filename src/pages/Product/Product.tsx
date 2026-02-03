@@ -22,6 +22,8 @@ function Product() {
   const [likeStatus, setLikeStatus] = useState(false);
   const [likes, setLikes] = useState<number>(currentProduct?.likes ?? 0);
   const navigate = useNavigate();
+  const originalPrice = currentProduct && currentProduct.discount ? ((currentProduct.price * 10) / currentProduct.discount).toFixed(0) : null;
+  const installmentPrice = currentProduct ? Math.ceil(currentProduct.price / 3) : 0;
 
   function addLike() {
     setLikeStatus((likeStatus) => !likeStatus);
@@ -123,14 +125,14 @@ function Product() {
             </div>
             <div className={styles.itemPrice}>
               <span className={styles.currentPrice}>${currentProduct?.price}</span>
-              <span className={styles.originalPrice}>${((currentProduct?.price * 10) / currentProduct?.discount).toFixed(0)}</span>
+              {originalPrice && <span className={styles.originalPrice}>${originalPrice}</span>}
               {currentProduct?.discount && <span className={styles.discount}>{currentProduct?.discount}折</span>}
             </div>
             <div className={styles.itemDetails}>
               <div className={styles.detail}>
                 <div className={styles.detailTitle}>分期0利率</div>
                 <div className={styles.installment}>
-                  3期x ${Math.ceil(currentProduct?.price / 3)} (0利率){" "}
+                  3期x ${installmentPrice} (0利率){" "}
                   <a href="" className={styles.allPlans}>
                     查看全部方案
                     <img src={arrowRightBlue} alt="" />
