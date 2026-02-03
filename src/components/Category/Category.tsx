@@ -41,8 +41,8 @@ function Category() {
   const [showRightArrow, setShowRightArrow] = useState(true);
   const [scaleLeftArrow, setScaleLeftArrow] = useState(false);
   const [scaleRightArrow, setScaleRightArrow] = useState(false);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const prevRef = useRef<HTMLDivElement | null>(null);
+  const nextRef = useRef<HTMLDivElement | null>(null);
 
   function handleMouseEnter() {
     setScaleLeftArrow(true);

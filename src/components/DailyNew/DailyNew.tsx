@@ -4,10 +4,11 @@ import { useState } from "react";
 import { mergedMainItemInfo } from "./merchandise";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import type { RootState } from "../../store";
 
 function DailyNew() {
-  const isLogin = useSelector((state) => state.auth.isLogin);
-  const [isHoverIndex, setIsHoverIndex] = useState(null);
+  const isLogin = useSelector((state: RootState) => state.auth.isLogin);
+  const [isHoverIndex, setIsHoverIndex] = useState<number | null>(null);
 
   const handleMouseEnter = (index: number) => {
     setIsHoverIndex(index);

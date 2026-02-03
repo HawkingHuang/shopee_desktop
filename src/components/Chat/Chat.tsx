@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styles from "./Chat.module.scss";
 import { useState } from "react";
+import type { RootState } from "../../store";
 
 import chatIcon from "@/assets/images/icons/chat.svg";
 import chatTextIcon from "@/assets/images/icons/chat_text.svg";
@@ -39,7 +40,7 @@ function Chat() {
     setDialogStatus(false);
     setTimeout(() => setChatStatus(true), 250);
   }
-  const isLogin = useSelector((state) => state.auth.isLogin);
+  const isLogin = useSelector((state: RootState) => state.auth.isLogin);
   return (
     <>
       {!isLogin && (

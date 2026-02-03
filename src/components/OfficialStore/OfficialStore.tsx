@@ -48,11 +48,11 @@ function OfficialStore() {
   const [showRightArrow, setShowRightArrow] = useState(true);
   const [scaleLeftArrow, setScaleLeftArrow] = useState(false);
   const [scaleRightArrow, setScaleRightArrow] = useState(false);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const prevRef = useRef<HTMLDivElement | null>(null);
+  const nextRef = useRef<HTMLDivElement | null>(null);
 
-  const prevRefRight = useRef(null);
-  const nextRefRight = useRef(null);
+  const prevRefRight = useRef<HTMLDivElement | null>(null);
+  const nextRefRight = useRef<HTMLDivElement | null>(null);
 
   function handleMouseEnter() {
     setScaleLeftArrow(true);

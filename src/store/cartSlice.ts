@@ -1,52 +1,46 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+
+export type CartItem = {
+  id: number;
+  seller: string;
+  image: string;
+  productName: string;
+  price: number;
+  quantity: number;
+  remaining: number;
+};
+
+const initialState: CartItem[] = [];
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: [],
+  initialState,
   reducers: {
     addToCart: {
-      prepare(id, seller, image, productName, price, quantity, remaining) {
-        return {
-          payload: {
-            id,
-            seller,
-            image,
-            productName,
-            price,
-            quantity,
-            remaining,
-          },
-        };
+      prepare(payload: CartItem) {
+        return { payload };
       },
-      reducer(state, action) {
-        const currentProduct = {
-          id: action.payload.id,
-          image: action.payload.image,
-          productName: action.payload.productName,
-          price: action.payload.price,
-          quantity: action.payload.quantity,
-          remaining: action.payload.remaining,
-          seller: action.payload.seller,
-        };
-        state.push(currentProduct);
+      reducer(state, action: PayloadAction<CartItem>) {
+        state.push(action.payload);
       },
     },
-    increaseQuantity(state, action) {
+    increaseQuantity(state, action: PayloadAction<number>) {
       const index = state.findIndex((item) => item.id === action.payload);
+      if (index === -1) return;
       state[index].quantity += 1;
     },
-    decreaseQuantity(state, action) {
+    decreaseQuantity(state, action: PayloadAction<number>) {
       const index = state.findIndex((item) => item.id === action.payload);
+      if (index === -1) return;
       state[index].quantity -= 1;
     },
-    setQuantity(state, action) {
+    setQuantity(state, action: PayloadAction<{ id: number; quantity: number }>) {
       const index = state.findIndex((item) => item.id === action.payload.id);
       if (index === -1) return;
       state[index].quantity = action.payload.quantity;
     },
-    deleteFromCart(state, action) {
-      const newState = state.filter((item) => item.id !== action.payload);
-      return newState;
+    deleteFromCart(state, action: PayloadAction<number>) {
+      return state.filter((item) => item.id !== action.payload);
     },
   },
 });

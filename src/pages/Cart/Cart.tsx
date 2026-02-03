@@ -10,20 +10,22 @@ import emptyCartPNG from "@/assets/images/cart/empty_cart.png";
 import { useEffect, useRef, useState } from "react";
 import { decreaseQuantity, deleteFromCart, increaseQuantity, setQuantity } from "../../store/cartSlice";
 import { useLocation } from "react-router-dom";
+import type { AppDispatch, RootState } from "../../store";
+import type { CartItem } from "../../store/cartSlice";
 
-function formatNumber(num) {
+function formatNumber(num: number) {
   return new Intl.NumberFormat("en-US").format(num);
 }
 
 function Cart() {
   const location = useLocation();
-  const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-  const [selectedIds, setSelectedIds] = useState([]);
+  const cart = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch<AppDispatch>();
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const isAllChecked = selectedIds.length === cart.length;
 
-  const sentinelRef = useRef(null);
-  const checkoutRef = useRef(null);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const checkoutRef = useRef<HTMLDivElement | null>(null);
   const [isStuck, setIsStuck] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,23 +44,23 @@ function Cart() {
     setSelectedIds((prev) => (prev.length === cart.length ? [] : cart.map((item) => item.id)));
   }
 
-  function toggleItem(id) {
+  function toggleItem(id: number) {
     setSelectedIds((prev) => (prev.includes(id) ? prev.filter((itemId) => itemId !== id) : [...prev, id]));
   }
 
-  function handleSetQuantity(id, targetValue) {
-    const item = cart.find((cartItem) => cartItem.id === id);
+  function handleSetQuantity(id: number, targetValue: number) {
+    const item = cart.find((cartItem: CartItem) => cartItem.id === id);
     if (!item) return;
 
     dispatch(setQuantity({ id, quantity: targetValue }));
   }
 
-  function handleSubtractQuantity(id, quantity) {
+  function handleSubtractQuantity(id: number, quantity: number) {
     if (quantity === 1) return;
     dispatch(decreaseQuantity(id));
   }
 
-  function handleAddQuantity(id, quantity, remaining) {
+  function handleAddQuantity(id: number, quantity: number, remaining: number) {
     if (quantity === remaining) return;
     dispatch(increaseQuantity(id));
   }

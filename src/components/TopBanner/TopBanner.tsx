@@ -14,10 +14,10 @@ const bannerImgs = Object.values(import.meta.glob<string>("@/assets/images/top_b
 
 const navImgs = Object.values(import.meta.glob<string>("@/assets/images/top_banner/nav_*.png", { eager: true, import: "default" }));
 
-function convertPath(path: string) {
+function convertPath(path: string): string {
   return navImgs.find((img) => {
     return img.includes(path);
-  });
+  }) ?? "";
 }
 
 const topBannerNavList = topBannerNavItems.map((item) => ({
@@ -27,8 +27,8 @@ const topBannerNavList = topBannerNavItems.map((item) => ({
 
 function TopBanner() {
   const [showArrows, setShowArrows] = useState(false);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const prevRef = useRef<HTMLDivElement | null>(null);
+  const nextRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div className={styles.topBannerWrap}>

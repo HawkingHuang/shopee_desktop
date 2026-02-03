@@ -1,5 +1,5 @@
 import styles from "./Product.module.scss";
-import { mergedMainItemInfo } from "../../components/DailyNew/merchandise";
+import { mergedMainItemInfo, type DailyNewItem } from "../../components/DailyNew/merchandise";
 import { useNavigate, useParams } from "react-router-dom";
 import truckIcon from "../../assets/images/product/truck.svg";
 import shieldIcon from "../../assets/images/product/shield.svg";
@@ -12,14 +12,15 @@ import ratingStarIcon from "../../assets/images/product/rating_star.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
+import type { AppDispatch } from "../../store";
 
 function Product() {
-  const dispatch = useDispatch();
-  const { productId } = useParams();
-  const currentProduct = mergedMainItemInfo.find((item) => item.id === Number(productId));
+  const dispatch = useDispatch<AppDispatch>();
+  const { productId } = useParams<{ productId: string }>();
+  const currentProduct: DailyNewItem | undefined = mergedMainItemInfo.find((item) => item.id === Number(productId));
   const [quantity, setQuantity] = useState(1);
   const [likeStatus, setLikeStatus] = useState(false);
-  const [likes, setLikes] = useState(currentProduct?.likes);
+  const [likes, setLikes] = useState<number>(currentProduct?.likes ?? 0);
   const navigate = useNavigate();
 
   function addLike() {
@@ -43,7 +44,18 @@ function Product() {
   }
 
   function handleAddtoCart() {
-    dispatch(addToCart(currentProduct?.id, currentProduct?.seller, currentProduct?.img, currentProduct?.name, currentProduct?.price, quantity, currentProduct?.remaining));
+    if (!currentProduct) return;
+    dispatch(
+      addToCart({
+        id: currentProduct.id,
+        seller: currentProduct.seller,
+        image: currentProduct.img,
+        productName: currentProduct.name,
+        price: currentProduct.price,
+        quantity,
+        remaining: currentProduct.remaining,
+      }),
+    );
   }
 
   function handleBuyNow() {

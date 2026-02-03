@@ -6,6 +6,32 @@ import officialIcon from "@/assets/images/daily_new/info_tags/official.png";
 import selectionIcon from "@/assets/images/daily_new/info_tags/selection.png";
 import flagshipIcon from "@/assets/images/daily_new/info_tags/flagship.png";
 
+export type DailyNewTag = {
+  name: string;
+  color: "green" | "pink" | "orange";
+};
+
+export type DailyNewItemBase = {
+  id: number;
+  name: string;
+  seller: string;
+  price: number;
+  progress: string;
+  sold: string;
+  remaining: number;
+  discount: number | null;
+  likes: number;
+  infoTag: string;
+  breadcrumb: string[];
+  comments: number;
+  tag: DailyNewTag[];
+  bottomLeftImg: string;
+};
+
+export type DailyNewItem = DailyNewItemBase & {
+  img: string;
+};
+
 const mainItemImgs = Object.entries(
   import.meta.glob<string>("@/assets/images/daily_new/*.webp", {
     eager: true,
@@ -19,7 +45,7 @@ const mainItemImgs = Object.entries(
   })
   .map(([_, img]) => img);
 
-const mainItemInfo = [
+const mainItemInfo: DailyNewItemBase[] = [
   {
     id: 1,
     name: "綜合堅果 手作 堅果 隨手包 體驗包 原味腰果 核桃 胡桃 夏威夷果 杏仁 榛果 低溫烘焙堅果 零食 零嘴 團購伴手禮",
@@ -281,7 +307,7 @@ const mainItemInfo = [
   },
 ];
 
-export const mergedMainItemInfo = mainItemInfo.map((item, index) => ({
+export const mergedMainItemInfo: DailyNewItem[] = mainItemInfo.map((item, index) => ({
   ...item,
   img: mainItemImgs[index],
 }));

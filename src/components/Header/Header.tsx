@@ -13,6 +13,7 @@ import emptyCartPNG from "@/assets/images/cart/empty_cart.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/authSlice";
 import * as HoverCard from "@radix-ui/react-hover-card";
+import type { AppDispatch, RootState } from "../../store";
 
 import qrcodePNG from "@/assets/images/header/qr_code.png";
 import appStorePNG from "@/assets/images/header/app_store.png";
@@ -25,15 +26,15 @@ import notificationTwo from "@/assets/images/header/notifications/2.png";
 import { hotKeywords } from "./headerData";
 
 function Header() {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state: RootState) => state.cart);
   const location = useLocation();
   const isCartPage = location.pathname === "/cart";
-  function formatNumber(num) {
+  function formatNumber(num: number) {
     return new Intl.NumberFormat("en-US").format(num);
   }
   const navigate = useNavigate();
-  const { isLogin, username } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  const { isLogin, username } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch<AppDispatch>();
 
   const headerTop = (
     <>

@@ -1,16 +1,17 @@
 import styles from "./LoginSignup.module.scss";
 import mainLogoOrangeIcon from "@/assets/images/icons/main_logo_orange.svg";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { login } from "../../store/authSlice";
+import type { AppDispatch } from "../../store";
 
 function LoginSignup() {
   const [username, setUsername] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const location = useLocation();
-  function handleSubmit(e) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(login(username));
     setUsername("");
