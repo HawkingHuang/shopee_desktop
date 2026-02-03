@@ -21,6 +21,11 @@ const cartSlice = createSlice({
         return { payload };
       },
       reducer(state, action: PayloadAction<CartItem>) {
+        const existing = state.find((item) => item.id === action.payload.id);
+        if (existing) {
+          existing.quantity += action.payload.quantity;
+          return;
+        }
         state.push(action.payload);
       },
     },
