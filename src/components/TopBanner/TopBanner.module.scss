@@ -19,6 +19,10 @@
       gap: 5px;
       margin-bottom: 30px;
 
+      @include respond-1280 {
+        height: 190px;
+      }
+
       .topBannerCarouselWrapLeft {
         position: relative;
         flex: 2;
@@ -65,11 +69,19 @@
         .carouselSwiper {
           width: 100%;
 
+          @include respond-1280 {
+            height: 100%;
+          }
+
           .carouselImg {
             display: block;
             width: 100%;
             aspect-ratio: 3.4 / 1;
             border-radius: 2px;
+
+            @include respond-1280 {
+              height: 100%;
+            }
           }
         }
       }
