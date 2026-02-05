@@ -30,7 +30,9 @@ function ResponsiveNoticeDialog({ open, onOpenChange }: ResponsiveNoticeDialogPr
             boxShadow: "0 12px 40px rgba(0,0,0,0.2)",
           }}
         >
-          <p style={{ fontSize: 16, margin: 0, lineHeight: 1.6 }}>本作品因應蝦皮官方網頁和手機App完全獨立的策略，因此僅適合透過電腦和平版電腦網頁進行瀏覽</p>
+          <p style={{ fontSize: 16, margin: 0, lineHeight: 1.6 }}>本作品因應蝦皮官方網頁和手機 App 完全獨立的策略，因此僅適合透過電腦和平版電腦網頁進行瀏覽</p>
+          <p style={{ fontSize: 16, margin: 0, lineHeight: 1.6, marginTop: "8px" }}>登入功能僅透過 Redux 進行偽登入，輸入任一亂數即可</p>
+          <p style={{ fontSize: 16, margin: 0, lineHeight: 1.6, marginTop: "8px" }}>如需嘗試加到購物車功能，請下滑至「每日新發現」區塊並點擊商品進行相關操作</p>
           <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 16 }}>
             <Dialog.Close asChild>
               <button
