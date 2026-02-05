@@ -10,7 +10,7 @@ export const topBannerNavItems: TopBannerNavItem[] = [
   },
   {
     title: "免運$99起",
-    pathKey: "nav_1",
+    pathKey: "nav_2",
   },
   {
     title: "免運當日到！",
