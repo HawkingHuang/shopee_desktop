@@ -78,7 +78,7 @@ function LimitedTime() {
       <div className="container">
         <div className={styles.limitedTimeTitleWrap}>
           <div className={styles.LimitedTimeTitleWrapLeft}>
-            <img src={limitedTimeImg} alt="" />
+            <img src={limitedTimeImg} alt="限時特賣" />
             <div className={styles.countdown}>
               <div className={styles.hours}>
                 <Digits value={digits.h1} />
@@ -159,11 +159,11 @@ function LimitedTime() {
                       {item.discount}折
                     </span>
                     <div className={styles.topLeftImgWrap}>
-                      <img className={`${styles.topLeftImg} ${item.notOfficial ? styles.notOfficial : ""}`} src={item.topLeftImg} alt="" />
+                      <img className={`${styles.topLeftImg} ${item.notOfficial ? styles.notOfficial : ""}`} src={item.topLeftImg} alt={item.notOfficial ? "精選標籤" : "官方商城標籤"} />
                     </div>
-                    <img className={styles.limitedItemImg} src={item.img} alt="" />
+                    <img className={styles.limitedItemImg} src={item.img} alt="限時特賣商品" />
                     <div className={styles.bottomLeftImgWrap}>
-                      <img className={styles.bottomLeftImg} src={item.bottomLeftImg} alt="" />
+                      <img className={styles.bottomLeftImg} src={item.bottomLeftImg} alt="折扣標籤" />
                     </div>
                   </div>
                   <p className={styles.limitedItemPrice}>${item.price}</p>
@@ -172,7 +172,7 @@ function LimitedTime() {
                     <p className={styles.progress}>{item.progress}</p>
                     {item.popular && (
                       <div className={styles.popularWrap}>
-                        <img className={styles.popular} src={popularFireImg} alt="" />
+                        <img className={styles.popular} src={popularFireImg} alt="熱門" />
                       </div>
                     )}
                   </div>

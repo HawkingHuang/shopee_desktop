@@ -15,9 +15,11 @@ const bannerImgs = Object.values(import.meta.glob<string>("@/assets/images/top_b
 const navImgs = Object.values(import.meta.glob<string>("@/assets/images/top_banner/nav_*.png", { eager: true, import: "default" }));
 
 function convertPath(path: string): string {
-  return navImgs.find((img) => {
-    return img.includes(path);
-  }) ?? "";
+  return (
+    navImgs.find((img) => {
+      return img.includes(path);
+    }) ?? ""
+  );
 }
 
 const topBannerNavList = topBannerNavItems.map((item) => ({
@@ -82,7 +84,7 @@ function TopBanner() {
         <div className={styles.topBannerNavWrap}>
           {topBannerNavList.map((item) => (
             <div className={styles.topBannerNav} key={item.title}>
-              <img className={styles.topBannerNavImg} src={item.path} alt="" />
+              <img className={styles.topBannerNavImg} src={item.path} alt={item.title} />
               <div className={styles.topBannerNavTitle}>{item.title}</div>
             </div>
           ))}

@@ -45,30 +45,30 @@ function Chat() {
     <>
       {!isLogin && (
         <div className={`${styles.chatBtn} ${chatStatus ? styles.active : styles.inactive}`} onClick={() => openDialog()}>
-          <img src={chatIcon} alt="" />
-          <img src={chatTextIcon} alt="" />
+          <img src={chatIcon} alt="Chat" />
+          <img src={chatTextIcon} alt="Chat text" />
         </div>
       )}
       {isLogin && (
         <div className={`${styles.chatBtn} ${chatStatus ? styles.active : styles.inactive}`} onClick={() => openDialog()}>
-          <img src={chatIcon} alt="" />
-          <img src={chatTextChIcon} alt="" />
+          <img src={chatIcon} alt="Chat" />
+          <img src={chatTextChIcon} alt="聊天文字" />
         </div>
       )}
       {!isLogin && (
         <div className={`${styles.chatDialog} ${dialogStatus ? styles.active : styles.inactive}`}>
           <div className={styles.chatDialogTitle}>
             <div className={styles.chatTitleLeft}>
-              <img src={chatTextIcon} alt="" />
+              <img src={chatTextIcon} alt="Chat text" />
             </div>
             <div className={styles.chatTitleRight}>
-              <img src={arrowRightIcon} alt="" />
-              <img src={arrowDownIcon} alt="" onClick={() => closeDialog()} />
+              <img src={arrowRightIcon} alt="Expand" />
+              <img src={arrowDownIcon} alt="Collapse" onClick={() => closeDialog()} />
             </div>
           </div>
           <div className={styles.chatContent}>
             <div className={styles.chatContentInner}>
-              <img src={loadingErrorPNG} alt="" />
+              <img src={loadingErrorPNG} alt="Load error" />
               <div className={styles.errorText}>抱歉，伺服器錯誤</div>
               <button className={styles.reloadBtn}>點擊重新加載</button>
             </div>
@@ -79,11 +79,11 @@ function Chat() {
         <div className={`${styles.chatDialog} ${dialogStatus ? styles.active : styles.inactive}`}>
           <div className={styles.chatDialogTitle}>
             <div className={styles.chatTitleLeft}>
-              <img src={chatTextChIcon} alt="" />
+              <img src={chatTextChIcon} alt="聊天文字" />
             </div>
             <div className={styles.chatTitleRight}>
-              <img src={arrowRightIcon} alt="" />
-              <img src={arrowDownIcon} alt="" onClick={() => closeDialog()} />
+              <img src={arrowRightIcon} alt="Expand" />
+              <img src={arrowDownIcon} alt="Collapse" onClick={() => closeDialog()} />
             </div>
           </div>
           <div className={styles.chatContent}>
@@ -122,7 +122,7 @@ function Chat() {
               <div className={styles.sellerList}>
                 {filteredSellerList.map((seller) => (
                   <div className={styles.seller} key={seller.name} onMouseEnter={() => setCurrentSeller(seller.name)} onMouseLeave={() => setCurrentSeller("")}>
-                    <img src={seller.img} alt="" />
+                    <img src={seller.img} alt={seller.name} />
                     <div className={styles.sellerInfo}>
                       <div className={styles.sellerInfoUpper}>
                         {!keyword ? (
@@ -156,7 +156,7 @@ function Chat() {
             </div>
             <div className={styles.chatContentRight}>
               <div className={styles.chatContentRightInner}>
-                <img src={startChatIcon} alt="" />
+                <img src={startChatIcon} alt="Start chat" />
                 <div className={styles.startChat}>歡迎使用蝦皮聊聊</div>
                 <div className={styles.startChatEn}>Start chatting with our sellers now!</div>
               </div>

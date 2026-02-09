@@ -71,7 +71,7 @@ function Product() {
           {currentProduct?.breadcrumb.map((bread) => (
             <div key={bread} className={styles.bread}>
               <span>{bread}</span>
-              <img src={arrowBreadcrumb} alt="" />
+              <img src={arrowBreadcrumb} alt="Breadcrumb separator" />
             </div>
           ))}
           <div className={styles.productName}>{currentProduct?.name}</div>
@@ -80,9 +80,9 @@ function Product() {
           <div className={styles.productMainContentLeft}>
             <div className={styles.item}>
               <div className={styles.itemImgWrap}>
-                <img className={styles.itemImg} src={currentProduct?.img} alt="" />
+                <img className={styles.itemImg} src={currentProduct?.img} alt={currentProduct?.name ?? "Product image"} />
                 <div className={styles.bottomLeftImgWrap}>
-                  <img className={styles.bottomLeftImg} src={currentProduct?.bottomLeftImg} alt="" />
+                  <img className={styles.bottomLeftImg} src={currentProduct?.bottomLeftImg} alt={currentProduct?.name ? `${currentProduct.name} badge` : "Promotion badge"} />
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@ function Product() {
                 </div>
               </div>
               <div className={styles.likes}>
-                {!likeStatus ? <img src={emptyHeartIcon} alt="" onClick={() => addLike()} /> : <img src={solidHeartIcon} alt="" onClick={() => removeLike()} />}
+                {!likeStatus ? <img src={emptyHeartIcon} alt="Add to favorites" onClick={() => addLike()} /> : <img src={solidHeartIcon} alt="Remove from favorites" onClick={() => removeLike()} />}
                 喜歡 ({likes})
               </div>
             </div>
@@ -110,7 +110,7 @@ function Product() {
                 <div className={styles.ratingNumber}>5.0</div>
                 <div className={styles.stars}>
                   {Array.from({ length: 5 }).map((_, index) => (
-                    <img src={ratingStarIcon} alt="" key={index} />
+                    <img src={ratingStarIcon} alt="Rating star" key={index} />
                   ))}
                 </div>
               </div>
@@ -135,14 +135,14 @@ function Product() {
                   3期x ${installmentPrice} (0利率){" "}
                   <a href="" className={styles.allPlans}>
                     查看全部方案
-                    <img src={arrowRightBlue} alt="" />
+                    <img src={arrowRightBlue} alt="View plans" />
                   </a>
                 </div>
               </div>
               <div className={styles.detail}>
                 <div className={styles.detailTitle}>運送</div>
                 <div className={styles.shipping}>
-                  <img src={truckIcon} alt="" />
+                  <img src={truckIcon} alt="Shipping" />
                   <div className={styles.shippingContent}>
                     <div>預計配達時間 1月14日 - 1月16日</div>
                     <div>運費：$0 起</div>
@@ -153,7 +153,7 @@ function Product() {
               <div className={styles.detail}>
                 <div className={styles.detailTitle}>服務與保障</div>
                 <div className={styles.refund}>
-                  <img src={shieldIcon} alt="" />
+                  <img src={shieldIcon} alt="Buyer protection" />
                   <div>蝦皮放心買 · 蝦皮安心退</div>
                   <svg viewBox="0 0 12 12" fill="none" width="12" height="12" color="#0000008a">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8.146L11.146 3l.707.707-5.146 5.147a1 1 0 01-1.414 0L.146 3.707.854 3 6 8.146z" fill="currentColor"></path>
@@ -184,7 +184,7 @@ function Product() {
             </div>
             <div className={styles.itemActions}>
               <button className={styles.addToCart} onClick={() => handleAddtoCart()}>
-                <img src={AddToCartIcon} alt="" />
+                <img src={AddToCartIcon} alt="Add to cart" />
                 加入購物車
               </button>
               <button className={styles.buyNow} onClick={() => handleBuyNow()}>

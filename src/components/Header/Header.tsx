@@ -37,14 +37,14 @@ function Header() {
             <div className="container">
               <div className={styles.headerWrapLower}>
                 <div className={styles.headerLogo} onClick={() => navigate("/")}>
-                  <img src={mainLogoOrangeIcon} alt="" />
+                  <img src={mainLogoOrangeIcon} alt="Shopee logo" />
                   <div className={styles.headerCartText}>購物車</div>
                 </div>
                 <div className={styles.headerSearch}>
                   <form className={styles.headerSearchInputForm} action="">
                     <input className={styles.headerSearchInput} type="text" placeholder="蝦皮直營 用券0門檻最高折$100" />
                     <button className={styles.headerSearchButton}>
-                      <img src={searchIcon} alt="" />
+                      <img src={searchIcon} alt="Search" />
                     </button>
                   </form>
                 </div>
@@ -58,13 +58,13 @@ function Header() {
           <div className="container">
             <div className={styles.headerWrapLower}>
               <div className={styles.headerLogo} onClick={() => navigate("/")}>
-                <img src={mainLogoIcon} alt="" />
+                <img src={mainLogoIcon} alt="Shopee logo" />
               </div>
               <div className={styles.headerSearch}>
                 <form className={styles.headerSearchInputForm} action="">
                   <input className={styles.headerSearchInput} type="text" placeholder="註冊獲得全站優惠券與免運券" />
                   <button className={styles.headerSearchButton}>
-                    <img src={searchIcon} alt="" />
+                    <img src={searchIcon} alt="Search" />
                   </button>
                 </form>
                 <div className={styles.headerSearchSuggestion}>
@@ -77,7 +77,7 @@ function Header() {
                 <HoverCard.Root openDelay={100} closeDelay={100}>
                   <HoverCard.Trigger asChild>
                     <div className={styles.cartIconWrap} onClick={() => navigate(isLogin ? "/cart" : "/login")}>
-                      <img src={cartIcon} alt="" />
+                      <img src={cartIcon} alt="Cart" />
                       {cart.length > 0 && <div className={styles.cartItemCount}>{cart.length}</div>}
                     </div>
                   </HoverCard.Trigger>
@@ -95,7 +95,7 @@ function Header() {
                           <div className={styles.cartPanelTitle}>最近加入的商品</div>
                           {cart.map((item) => (
                             <div key={item.id} className={styles.cartPanelItem}>
-                              <img src={item.image} alt="" className={styles.cartPanelItemImage} />
+                              <img src={item.image} alt={item.productName} className={styles.cartPanelItemImage} />
                               <div className={styles.cartPanelItemName}>{item.productName}</div>
                               <div className={styles.cartPanelItemPrice}>${formatNumber(item.price)}</div>
                             </div>

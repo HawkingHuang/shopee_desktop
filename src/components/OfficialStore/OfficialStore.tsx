@@ -74,15 +74,15 @@ function OfficialStore() {
             </a>
             <div className={styles.officialStoreBenefits}>
               <div className={styles.benefit}>
-                <img src={benefitOneImg} alt="" />
+                <img src={benefitOneImg} alt="15 天鑑賞期" />
                 15 天鑑賞期
               </div>
               <div className={styles.benefit}>
-                <img src={benefitTwoImg} alt="" />
+                <img src={benefitTwoImg} alt="蝦皮安心退" />
                 蝦皮安心退
               </div>
               <div className={styles.benefit}>
-                <img src={benefitThreeImg} alt="" />
+                <img src={benefitThreeImg} alt="正品保障" />
                 正品保障
               </div>
             </div>
@@ -199,7 +199,7 @@ function OfficialStore() {
 
                       return (
                         <div key={i} className={styles.categoryItem}>
-                          <img className={styles.categoryItemImg} src={item.img} alt="" />
+                          <img className={styles.categoryItemImg} src={item.img} alt={item.name} />
                           <div className={styles.categoryItemName}>{item.name}</div>
                         </div>
                       );

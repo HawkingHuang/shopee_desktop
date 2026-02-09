@@ -27,20 +27,20 @@ function DailyNew() {
               <div className={styles.dailyNewItem} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave}>
                 {item.discount && <span className={styles.discount}>{item.discount}折</span>}
                 <div className={styles.dailyNewItemImgWrap}>
-                  <img className={styles.dailyNewItemImg} src={item.img} alt="" />
+                  <img className={styles.dailyNewItemImg} src={item.img} alt={item.name} />
                   <div className={styles.bottomLeftImgWrap}>
-                    <img className={styles.bottomLeftImg} src={item.bottomLeftImg} alt="" />
+                    <img className={styles.bottomLeftImg} src={item.bottomLeftImg} alt={`${item.name} badge`} />
                   </div>
                 </div>
                 <div className={styles.dailyNewItemInfo}>
                   <div className={styles.dailyNewItemName}>
-                    {item.infoTag && <img className={styles.infoTag} src={item.infoTag} alt="" />}
+                    {item.infoTag && <img className={styles.infoTag} src={item.infoTag} alt={`${item.name} info tag`} />}
                     {item.name}
                   </div>
                   <div className={styles.dailyNewItemTags}>
                     {item.tag.map((tag) => (
                       <div key={tag.name} className={`${styles.dailyNewItemTag} ${styles[tag.color]}`}>
-                        {tag.color === "pink" && <img className={styles.flash} src={flashIcon} />}
+                        {tag.color === "pink" && <img className={styles.flash} src={flashIcon} alt="Flash icon" />}
                         {tag.color === "orange" && (
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 16">
                             <path

@@ -13,7 +13,7 @@ const popularItemImgs = Object.entries(
   import.meta.glob<string>("@/assets/images/popular/*.jfif", {
     eager: true,
     import: "default",
-  })
+  }),
 )
   .sort(([a], [b]) => {
     const numA = parseInt(a.match(/\d+/)![0]);
@@ -103,9 +103,9 @@ function Popular() {
                 <div className={styles.popularItemWrap}>
                   <div className={styles.popularItemImgWrap}>
                     <div className={styles.topLeftImgWrap}>
-                      <img className={styles.topLeftImg} src={topLeftIcon} alt="" />
+                      <img className={styles.topLeftImg} src={topLeftIcon} alt="Top badge" />
                     </div>
-                    <img className={styles.popularItemImg} src={item.img} alt="" />
+                    <img className={styles.popularItemImg} src={item.img} alt={item.name} />
                     <div className={styles.bottomWrap}>{item.sold}</div>
                   </div>
                   <p className={styles.popularItemName}>{item.name}</p>

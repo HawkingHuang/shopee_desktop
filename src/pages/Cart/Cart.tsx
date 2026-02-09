@@ -32,7 +32,7 @@ function Cart() {
       ([entry]) => {
         setIsStuck(!entry.isIntersecting);
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
 
     if (sentinelRef.current) observer.observe(sentinelRef.current);
@@ -72,7 +72,7 @@ function Cart() {
       {cart.length === 0 && (
         <div className="container">
           <div className={styles.emptyCartWrap}>
-            <img src={emptyCartPNG} alt="" />
+            <img src={emptyCartPNG} alt="Empty cart" />
             <div className={styles.cartEmptyText}>你的購物車還是空的</div>
             <button>去蝦拼吧！</button>
           </div>
@@ -105,10 +105,10 @@ function Cart() {
                     <input type="checkbox" checked={selectedIds.includes(item.id)} onChange={() => toggleItem(item.id)} />
                   </div>
                   <div>
-                    <img src={item.image} alt="" />
+                    <img src={item.image} alt={item.productName} />
                     <div className={styles.product}>
                       <div className={styles.productName}>{item.productName}</div>
-                      <img src={freeShippingPNG} alt="" />
+                      <img src={freeShippingPNG} alt="Free shipping" />
                     </div>
                   </div>
                   <div>${formatNumber(item.price)}</div>
@@ -137,19 +137,19 @@ function Cart() {
                     </div>
                     <div className={styles.similar}>
                       找相似
-                      <img src={arrowDownOrangeIcon} alt="" />
+                      <img src={arrowDownOrangeIcon} alt="Expand" />
                     </div>
                   </div>
                 </div>
                 <div className={styles.couponWrap}>
                   <div>
-                    <img src={couponIcon} alt="" />
+                    <img src={couponIcon} alt="Coupon" />
                   </div>
                   <div>請輸入賣場優惠券代碼</div>
                 </div>
                 <div className={styles.shippingWrap}>
                   <div>
-                    <img src={truckIcon} alt="" />
+                    <img src={truckIcon} alt="Shipping" />
                   </div>
                   <div>
                     滿$149，蝦皮店到店，免運費<span>了解更多</span>
@@ -161,7 +161,7 @@ function Cart() {
           <div ref={checkoutRef} className={`${styles.checkoutWrap} ${isStuck ? styles.isStuck : ""}`}>
             <div className={styles.firstRow}>
               <div className={styles.couponAll}>
-                <img src={couponIcon} alt="" />
+                <img src={couponIcon} alt="Coupon" />
                 全站優惠券
               </div>
               <div className={styles.chooseCoupon}>選擇優惠券或輸入優惠代碼</div>
@@ -172,12 +172,12 @@ function Cart() {
             </div>
             <div className={styles.secondRowRight}>
               <div className={styles.shopeeCoin}>
-                <img src={coinIcon} alt="" />
+                <img src={coinIcon} alt="Shopee coin" />
                 <div>蝦幣</div>
               </div>
               <div className={styles.noItemSelected}>
                 <div>尚未選擇商品</div>
-                <img src={questionIcon} alt="" />
+                <img src={questionIcon} alt="Help" />
               </div>
             </div>
             <div className={styles.dashedBorder}></div>

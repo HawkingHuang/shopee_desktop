@@ -12,7 +12,7 @@ const categoryImgs = Object.entries(
   import.meta.glob<string>("@/assets/images/category/*.webp", {
     eager: true,
     import: "default",
-  })
+  }),
 )
   .sort(([a], [b]) => {
     const numA = parseInt(a.match(/\d+/)![0]);
@@ -104,7 +104,7 @@ function Category() {
                 <div className={styles.categoryItemWrap}>
                   {chunk.map((item, i) => (
                     <div key={i} className={styles.categoryItem}>
-                      <img className={styles.categoryItemImg} src={item.img} alt="" />
+                      <img className={styles.categoryItemImg} src={item.img} alt={item.name} />
                       <div className={styles.categoryItemName}>{item.name}</div>
                     </div>
                   ))}

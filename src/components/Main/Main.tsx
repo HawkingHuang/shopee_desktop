@@ -34,7 +34,7 @@ function Main() {
   return (
     <div className={styles.mainWrap}>
       <div className="container">
-        <img className={styles.officialImg} src={officialImg} alt="" />
+        <img className={styles.officialImg} src={officialImg} alt="Official store" />
         <div className={styles.main}>
           <div className={styles.mainMiddle}>
             <p className={styles.mainMiddleText}>每週日搶商城95折券，最高折$1,500</p>
@@ -49,9 +49,9 @@ function Main() {
             {productVendorList.map(({ productImg, vendorImg, productText }) => (
               <div className={styles.productVendor} key={productImg}>
                 <div className={styles.productImgWrap}>
-                  <img className={styles.productImg} src={productImg} alt="" />
+                  <img className={styles.productImg} src={productImg} alt={productText} />
                   <div className={styles.vendorImgWrap}>
-                    <img className={styles.vendorImg} src={vendorImg} alt="" />
+                    <img className={styles.vendorImg} src={vendorImg} alt="Vendor logo" />
                   </div>
                 </div>
                 <p className={styles.productText}>{productText}</p>
@@ -59,7 +59,7 @@ function Main() {
             ))}
           </div>
         </div>
-        <img className={styles.redBgBottom} src={redBgBottom} alt="" />
+        <img className={styles.redBgBottom} src={redBgBottom} alt="Promotion banner" />
       </div>
     </div>
   );

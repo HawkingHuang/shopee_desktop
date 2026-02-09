@@ -4,11 +4,17 @@ import { aboutShopeeLinks, countryList, customerServiceLinks, logisticsImgsOrder
 
 // 付款圖片
 const rawPaymentImgs = import.meta.glob<string>("@/assets/images/footer/payment_*.png", { eager: true, import: "default" });
-const orderedPaymentImgs = paymentImgsOrder.map((name) => rawPaymentImgs[`/src/assets/images/footer/${name}.png`]);
+const orderedPaymentImgs = paymentImgsOrder.map((name) => ({
+  name,
+  img: rawPaymentImgs[`/src/assets/images/footer/${name}.png`],
+}));
 
 // 物流合作圖片
 const rawLogisticsImgs = import.meta.glob<string>("@/assets/images/footer/logistics_*.png", { eager: true, import: "default" });
-const orderedLogisticsImgs = logisticsImgsOrder.map((name) => rawLogisticsImgs[`/src/assets/images/footer/${name}.png`]);
+const orderedLogisticsImgs = logisticsImgsOrder.map((name) => ({
+  name,
+  img: rawLogisticsImgs[`/src/assets/images/footer/${name}.png`],
+}));
 
 // 標章圖片
 const labelImgs = Object.values(import.meta.glob<string>("@/assets/images/footer/reduction_label*.png", { eager: true, import: "default" }));
@@ -47,25 +53,25 @@ function Footer() {
           <div className={styles.listWrap}>
             <div className={styles.listTitle}>付款</div>
             <div className={styles.listGrid}>
-              {orderedPaymentImgs.map((img) => (
+              {orderedPaymentImgs.map(({ img, name }) => (
                 <div className={styles.listGridItem}>
-                  <img key={img} src={img} alt="" />
+                  <img key={img} src={img} alt={name} />
                 </div>
               ))}
             </div>
             <div className={styles.listTitle}>物流合作</div>
             <div className={styles.listGrid}>
-              {orderedLogisticsImgs.map((img) => (
+              {orderedLogisticsImgs.map(({ img, name }) => (
                 <div className={styles.listGridItem}>
-                  <img key={img} src={img} alt="" />
+                  <img key={img} src={img} alt={name} />
                 </div>
               ))}
             </div>
             <div className={styles.listTitle}>蝦皮直送包裝減量標章</div>
             <div className={styles.listGrid}>
-              {labelImgs.map((img) => (
+              {labelImgs.map((img, index) => (
                 <div className={styles.listGridItem}>
-                  <img key={img} src={img} alt="" />
+                  <img key={img} src={img} alt={`減量標章 ${index + 1}`} />
                 </div>
               ))}
             </div>
@@ -75,7 +81,7 @@ function Footer() {
             <div className={styles.listContent}>
               {socialMediaList.map((list) => (
                 <a key={list.name} href={list.link} className={styles.list} target="_blank">
-                  <img src={list.img} alt="" />
+                  <img src={list.img} alt={list.name} />
                   {list.name}
                 </a>
               ))}
@@ -85,17 +91,17 @@ function Footer() {
             <div className={styles.listTitle}>下載蝦皮</div>
             <div className={styles.listTwoColumn}>
               <div>
-                <img src={qrcodePNG} alt="" />
+                <img src={qrcodePNG} alt="Shopee app QR code" />
               </div>
               <div className={styles.listContent}>
                 <a href="https://shopee.tw/web" target="_blank">
-                  <img src={appStorePNG} alt="" />
+                  <img src={appStorePNG} alt="App Store" />
                 </a>
                 <a href="https://shopee.tw/web" target="_blank">
-                  <img src={googlePlayPNG} alt="" />
+                  <img src={googlePlayPNG} alt="Google Play" />
                 </a>
                 <a href="https://shopee.tw/web" target="_blank">
-                  <img src={appGalleryPNG} alt="" />
+                  <img src={appGalleryPNG} alt="AppGallery" />
                 </a>
               </div>
             </div>

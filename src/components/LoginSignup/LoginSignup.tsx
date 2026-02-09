@@ -23,7 +23,7 @@ function LoginSignup() {
         <div className={styles.loginSignupWrapUpper}>
           <div className={styles.loginSignupWrapUpperLeft}>
             <NavLink to="/">
-              <img src={mainLogoOrangeIcon} alt="" />
+              <img src={mainLogoOrangeIcon} alt="Shopee logo" />
             </NavLink>
             <div className={styles.loginSignupTitle}>{location.pathname === "/login" ? "登入" : "註冊"}</div>
           </div>
